@@ -8,8 +8,8 @@ namespace CCraft
 	class Application
 	{
 	private:
-		int width = 1280;
-		int height = 720;
+		int width = -1;
+		int height = -1;
 		GLFWwindow* window;
 
 	public:
@@ -19,7 +19,7 @@ namespace CCraft
 		void play();
 	private:
 		void launch();
-		void parseConfig(const char* configPath);
+		void parseConfig(const std::string& configPath);
 		void initWindow();
 		void initOpenGL();
 		void handleInput();

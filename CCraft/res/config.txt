@@ -1,4 +1,8 @@
-width: 1280
-height: 720
+Change the configuration file to change resolution, etc. Restart the game to apply new settings.
+
+width: 
+1280
+height: 
+720
 
 
