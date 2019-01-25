@@ -27,7 +27,10 @@
     <ClCompile Include="src\vendor\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\logger.cpp">
+    <ClCompile Include="src\renderer\VAO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logger\logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -761,7 +764,10 @@
     <ClInclude Include="src\vendor\glm\vector_relational.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\logger.h">
+    <ClInclude Include="src\renderer\VAO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\logger\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

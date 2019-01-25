@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "logger.h"
+#include "logger/logger.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
