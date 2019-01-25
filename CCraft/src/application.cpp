@@ -6,6 +6,7 @@
 namespace CCraft
 {
 	Application::Application()
+		: logger("Application", Logger::INFO)
 	{
 		launch();
 	}
@@ -50,9 +51,9 @@ namespace CCraft
 		height = atoi((ss[1].str()).c_str());
 
 		if (width != -1 && height != -1)
-			std::cout << "Configuration file successfully parsed." << std::endl;
+			logger.log("Configuration file successfully parsed.", Logger::INFO);
 		else
-			std::cout << "Error parsing configuration file." << std::endl;
+			logger.log("Error parsing configuration file.", Logger::FATAL);
 	}
 
 	void Application::initWindow()
@@ -66,13 +67,13 @@ namespace CCraft
 
 		if (window == NULL)
 		{
-			std::cout << "Couldn't initialize the window." << std::endl;
+			logger.log("Couldn't initialize the window.", Logger::FATAL);
 			glfwTerminate();
 		}
 		else
 		{
 			glfwMakeContextCurrent(window);
-			std::cout << "Window successfully initialized." << std::endl;
+			logger.log("Window successfully initialized.", Logger::INFO);
 		}
 		
 	}
@@ -81,10 +82,10 @@ namespace CCraft
 	{
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			std::cout << "Failed to initialize GLAD." << std::endl;
+			logger.log("Failed to initialize GLAD.", Logger::FATAL);
 		}
 		else
-			std::cout << "OpenGL successfully initialized." << std::endl;
+			logger.log("OpenGL successfully initialized.", Logger::INFO);
 	}
 
 	bool Application::running()
@@ -111,8 +112,8 @@ namespace CCraft
 	void Application::shutDown()
 	{
 		glfwTerminate();
-		std::cout << "Successfully terminated." << std::endl;
-		std::cout << "Press enter to continue..." << std::endl;
+		logger.log("Successfully terminated.", Logger::INFO);
+		logger.log("Press enter to continue...", Logger::INFO);
 		std::cin.get();
 	}
 }

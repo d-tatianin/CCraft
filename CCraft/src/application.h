@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "logger.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -11,6 +12,7 @@ namespace CCraft
 		int width = -1;
 		int height = -1;
 		GLFWwindow* window;
+		Logger logger;
 
 	public:
 		Application();
