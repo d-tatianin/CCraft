@@ -1,6 +1,8 @@
 #include "VertexArray.h"
+
 namespace CCraft 
 {
+
 	VertexArray::VertexArray()
 	{
 		glGenVertexArrays(1, &m_RendererID);
@@ -23,7 +25,6 @@ namespace CCraft
 			glEnableVertexAttribArray(i);
 			glVertexAttribPointer(i, element.count, element.type, element.normalized, layout.GetStride(), (const void*)offset);
 			offset += element.count * VertexBufferElement::GetSizeOfType(element.type);
-
 		}
 	}
 

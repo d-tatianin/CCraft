@@ -3,29 +3,22 @@
 #include "logger/logger.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "renderer/Renderer.h"
 
 namespace CCraft
 {
 	class Application
 	{
 	private:
-		int width = -1;
-		int height = -1;
-		GLFWwindow* window;
 		Logger logger;
-
+		Renderer renderer;
 	public:
 		Application();
-		~Application();
+		//~Application();
 		bool running();
 		void play();
 	private:
-		void launch();
-		void parseConfig(const std::string& configPath);
-		void initWindow();
-		void initOpenGL();
 		void handleInput();
-		void shutDown();
 	};
 
 }

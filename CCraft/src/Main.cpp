@@ -1,8 +1,6 @@
 #include "Application.h"
 
 
-
-
 int main()
 {
 	CCraft::Application game;
