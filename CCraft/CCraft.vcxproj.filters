@@ -36,6 +36,9 @@
     <ClCompile Include="src\logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -777,6 +780,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\logger\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

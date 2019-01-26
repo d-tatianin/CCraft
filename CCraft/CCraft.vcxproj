@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\logger\Logger.cpp" />
+    <ClCompile Include="src\renderer\Shader.cpp" />
     <ClCompile Include="src\renderer\VertexArray.cpp" />
     <ClCompile Include="src\renderer\VertexBuffer.cpp" />
     <ClCompile Include="src\vendor\glad.c" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\logger\Logger.h" />
+    <ClInclude Include="src\renderer\Shader.h" />
     <ClInclude Include="src\renderer\VertexArray.h" />
     <ClInclude Include="src\renderer\VertexBuffer.h" />
     <ClInclude Include="src\renderer\VertexBufferLayout.h" />
