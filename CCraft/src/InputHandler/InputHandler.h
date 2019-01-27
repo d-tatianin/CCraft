@@ -1,4 +1,7 @@
 #pragma once
+#include <Windows.h>
+#include <string>
+#include <sstream>
 #include "../logger/Logger.h"
 #include "GLFW/glfw3.h"
 

@@ -20,6 +20,7 @@ namespace CCraft
 		//VertexArray button_3;
 		//VertexBuffer button3_buffer;
 		Shader menuShader;
+		glm::mat4 menuMat;
 	public:
 		Menu();
 		//~Menu();

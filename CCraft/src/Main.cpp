@@ -1,5 +1,8 @@
 #include "Application.h"
 
+int width = -1;
+int height = -1;
+
 CCraft::Application game;
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)

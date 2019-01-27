@@ -13,7 +13,6 @@ namespace CCraft
 	{
 	private:
 		Logger logger;
-		int height, width;
 		GLFWwindow* window;
 	public:
 		Initializer();

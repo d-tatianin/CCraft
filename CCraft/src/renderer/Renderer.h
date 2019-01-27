@@ -23,7 +23,6 @@ namespace CCraft
 	private:
 		Initializer initializer;
 		Logger logger;
-		int height, width;
 		GLFWwindow* window;
 		GameState gameState;
 		Menu menu;

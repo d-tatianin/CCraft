@@ -16,7 +16,11 @@ namespace CCraft
 
 	void InputHandler::mouse_callback(double x, double y)
 	{
-		logger.log("MOUSE MOVED", Logger::INFO);
+		system("CLS");
+		std::stringstream ss;
+		ss << "Mouse position X:" << x << " Y:" << y;
+		std::string message = ss.str();
+		logger.log(message.c_str(), Logger::INFO);
 	}
 
 	void InputHandler::proccess()

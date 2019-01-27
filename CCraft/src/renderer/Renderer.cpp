@@ -4,9 +4,8 @@ namespace CCraft
 {
 
 	Renderer::Renderer()
-		: logger("RENDERER", Logger::INFO), width(initializer.width), height(initializer.height), window(initializer.window), gameState(GameState::MENU)
+		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU)
 	{
-
 	}
 
 

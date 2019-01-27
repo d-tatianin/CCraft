@@ -1,4 +1,8 @@
 #include "Init.h"
+
+extern int width;
+extern int height;
+
 namespace CCraft
 {
 	Initializer::Initializer()
