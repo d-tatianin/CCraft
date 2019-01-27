@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\logger\Logger.cpp" />
     <ClCompile Include="src\renderer\Init.cpp" />
     <ClCompile Include="src\renderer\objects\Block.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\InputHandler\InputHandler.h" />
     <ClInclude Include="src\logger\Logger.h" />
     <ClInclude Include="src\renderer\Init.h" />
     <ClInclude Include="src\renderer\objects\Block.h" />

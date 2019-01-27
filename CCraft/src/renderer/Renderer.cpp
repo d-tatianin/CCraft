@@ -33,4 +33,9 @@ namespace CCraft
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	GLFWwindow* Renderer::getWindowID()
+	{
+		return window;
+	}
 }

@@ -28,6 +28,7 @@ namespace CCraft
 		GameState gameState;
 		Menu menu;
 	public:
+		GLFWwindow* getWindowID();
 		Renderer();
 		void render();
 	private:

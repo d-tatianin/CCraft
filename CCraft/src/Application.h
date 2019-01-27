@@ -4,6 +4,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "renderer/Renderer.h"
+#include "InputHandler/InputHandler.h"
 
 namespace CCraft
 {
@@ -11,12 +12,14 @@ namespace CCraft
 	{
 	private:
 		Logger logger;
-		Renderer renderer;
+		InputHandler input;
 	public:
+		Renderer renderer;
 		Application();
 		//~Application();
 		bool running();
 		void play();
+		void setMouseCoords(double x, double y);
 	private:
 		void handleInput();
 	};
