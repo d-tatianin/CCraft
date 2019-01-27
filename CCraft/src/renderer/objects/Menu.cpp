@@ -1,5 +1,4 @@
 #include "Menu.h"
-//todo figure out a way to recalculate the buffer coordinates before initializing the button class in the constuctor.
 extern int width;
 extern int height;
 
@@ -28,6 +27,12 @@ namespace CCraft
 	{
 		menuShader.Bind();
 		menuShader.SetUniformMat4f("menuMat", menuMat);
+
+		if (but1.pressed)
+			menuShader.setVec3("color", glm::vec3(1.0f, 1.0f, 0.0f));
+		else
+			menuShader.setVec3("color", glm::vec3(1.0f, 0.5f, 0.0f));
+
 		button_1.Bind();
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}

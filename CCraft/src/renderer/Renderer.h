@@ -25,8 +25,8 @@ namespace CCraft
 		Logger logger;
 		GLFWwindow* window;
 		GameState gameState;
-		Menu menu;
 	public:
+		Menu menu;
 		GLFWwindow* getWindowID();
 		Renderer();
 		void render();

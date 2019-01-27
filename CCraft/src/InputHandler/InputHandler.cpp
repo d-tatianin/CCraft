@@ -16,11 +16,23 @@ namespace CCraft
 
 	void InputHandler::mouse_callback(double x, double y)
 	{
-		system("CLS");
-		std::stringstream ss;
-		ss << "Mouse position X:" << x << " Y:" << y;
-		std::string message = ss.str();
-		logger.log(message.c_str(), Logger::INFO);
+		//test only, remove later
+		if (x > 399 && x < 801)
+		{
+			if (y > 59 && y < 181)
+				button1Pressed = true;
+			else
+				button1Pressed = false;
+		}
+		else
+			button1Pressed = false;
+
+		//insane performance hit
+		//system("CLS");
+		//std::stringstream ss;
+		//ss << "Mouse position X:" << x << " Y:" << y;
+		//std::string message = ss.str();
+		//logger.log(message.c_str(), Logger::INFO);
 	}
 
 	void InputHandler::proccess()

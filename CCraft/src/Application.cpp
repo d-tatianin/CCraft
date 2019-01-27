@@ -24,6 +24,13 @@ namespace CCraft
 	void Application::play()
 	{
 		input.proccess();
+
+		//test only remove later
+		if (input.button1Pressed)
+			renderer.menu.but1.pressed = true;
+		else
+			renderer.menu.but1.pressed = false;
+
 		renderer.render();
 	}
 

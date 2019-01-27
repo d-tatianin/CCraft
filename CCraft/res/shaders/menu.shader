@@ -7,10 +7,14 @@
 
 layout (location = 0) in vec3 position;
 
+uniform vec3 color;
 uniform mat4 menuMat;
+
+out vec4 buttonColor;
 
 void main()
 {
+	buttonColor = vec4(color, 1.0f);
 	gl_Position = menuMat * vec4(position, 1.0f);
 }
 
@@ -18,9 +22,10 @@ void main()
 
 #version 330 core
 
+in vec4 buttonColor;
 out vec4 color;
 
 void main()
 {
-	color = vec4(1.0f, 0.5f, 0.0f, 1.0f);
+	color = buttonColor;
 }

@@ -163,6 +163,7 @@
     <ClInclude Include="src\logger\Logger.h" />
     <ClInclude Include="src\renderer\Init.h" />
     <ClInclude Include="src\renderer\objects\Block.h" />
+    <ClInclude Include="src\renderer\objects\ButtonStruct.h" />
     <ClInclude Include="src\renderer\objects\Hud.h" />
     <ClInclude Include="src\renderer\objects\Menu.h" />
     <ClInclude Include="src\renderer\Renderer.h" />

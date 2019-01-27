@@ -111,6 +111,12 @@ namespace CCraft
 		glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
 	}
 
+	//api inconsistensy
+	void Shader::setVec3(const std::string &name, const glm::vec3 &value)
+	{
+		glUniform3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, &value[0]);
+	}
+
 	void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& matrix)
 	{
 		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);

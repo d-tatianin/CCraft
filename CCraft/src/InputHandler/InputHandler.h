@@ -13,6 +13,9 @@ namespace CCraft
 		Logger logger;
 		GLFWwindow* window;
 	public:
+		//remove this var
+		bool button1Pressed = false;
+
 		InputHandler();
 		void setWindow(GLFWwindow* window);
 		void proccess();

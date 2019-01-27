@@ -6,6 +6,7 @@
 #include "../Shader.h"
 #include "../../vendor/glm/glm.hpp"
 #include "../../vendor/glm/gtc/matrix_transform.hpp"
+#include "ButtonStruct.h"
 
 namespace CCraft
 {
@@ -21,6 +22,8 @@ namespace CCraft
 		//VertexBuffer button3_buffer;
 		Shader menuShader;
 		glm::mat4 menuMat;
+	public:
+		Button but1;
 	public:
 		Menu();
 		//~Menu();
