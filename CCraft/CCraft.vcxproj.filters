@@ -27,9 +27,6 @@
     <ClCompile Include="src\renderer\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -792,9 +789,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\VertexBufferLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\logger\Logger.h">

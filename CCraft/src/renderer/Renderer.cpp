@@ -4,8 +4,9 @@ namespace CCraft
 {
 
 	Renderer::Renderer()
-		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU)
+		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU), input(window)
 	{
+
 	}
 
 
@@ -27,7 +28,17 @@ namespace CCraft
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		if (gameState == GameState::MENU)
+		{
+			input.proccess();
+
+			if (input.button1Pressed)
+				menu.but1.pressed = true;
+			else
+				menu.but1.pressed = false;
+
 			menu.draw();
+		}
+			
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

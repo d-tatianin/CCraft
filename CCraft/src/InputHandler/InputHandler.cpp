@@ -3,29 +3,17 @@
 namespace CCraft
 {
 
-	InputHandler::InputHandler()
-		: logger("INPUT", Logger::INFO)
+	InputHandler::InputHandler(GLFWwindow* window)
+		: logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
 	{
 
-	}
-
-	void InputHandler::setWindow(GLFWwindow* window)
-	{
-		this->window = window;
 	}
 
 	void InputHandler::mouse_callback(double x, double y)
 	{
-		//test only, remove later
-		if (x > 399 && x < 801)
-		{
-			if (y > 59 && y < 181)
-				button1Pressed = true;
-			else
-				button1Pressed = false;
-		}
-		else
-			button1Pressed = false;
+		if (gameState == GameState::MENU)
+			checkButtons(x, y);
+		
 
 		//insane performance hit
 		//system("CLS");
@@ -49,6 +37,19 @@ namespace CCraft
 			logger.log("D press detected", Logger::INFO);
 		if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
 			logger.log("V press detected", Logger::INFO);
+	}
+
+	void InputHandler::checkButtons(double x, double y)
+	{
+		if (x > 399 && x < 801)
+		{
+			if (y > 59 && y < 181)
+				button1Pressed = true;
+			else
+				button1Pressed = false;
+		}
+		else
+			button1Pressed = false;
 	}
 
 }

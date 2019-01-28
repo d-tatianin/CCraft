@@ -1,23 +1,24 @@
-#include "Application.h"
+#include "renderer/Renderer.h"
+
 
 int width = -1;
 int height = -1;
 
-CCraft::Application game;
+CCraft::Renderer game;
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	game.setMouseCoords(xpos, ypos);
+	game.input.mouse_callback(xpos, ypos);
 }
 
 int main()
 {
 
-	glfwSetCursorPosCallback(game.renderer.getWindowID(), mouse_callback);
+	glfwSetCursorPosCallback(game.getWindowID(), mouse_callback);
 
-	while (game.running())
+	while (game.running)
 	{
-		game.play();
+		game.render();
 	}
 
 	return 0;

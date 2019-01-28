@@ -6,16 +6,12 @@
 #include "Init.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-
+#include "../InputHandler/InputHandler.h"
 
 
 namespace CCraft
 {
-	enum GameState
-	{
-		MENU = 0, GAME = 1, PAUSED = 3
-	};
-
+	
 	class Renderer
 	{
 	public:
@@ -26,6 +22,7 @@ namespace CCraft
 		GLFWwindow* window;
 		GameState gameState;
 	public:
+		InputHandler input;
 		Menu menu;
 		GLFWwindow* getWindowID();
 		Renderer();
