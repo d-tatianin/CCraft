@@ -23,7 +23,7 @@ namespace CCraft
 		Shader menuShader;
 		glm::mat4 menuMat;
 	public:
-		Button but1;
+		Button button1;
 	public:
 		Menu();
 		//~Menu();

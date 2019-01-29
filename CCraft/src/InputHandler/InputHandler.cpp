@@ -11,8 +11,9 @@ namespace CCraft
 
 	void InputHandler::mouse_callback(double x, double y)
 	{
-		if (gameState == GameState::MENU)
-			checkButtons(x, y);
+		xCoord = x;
+		yCoord = y;
+
 		
 
 		//insane performance hit
@@ -39,17 +40,39 @@ namespace CCraft
 			logger.log("V press detected", Logger::INFO);
 	}
 
-	void InputHandler::checkButtons(double x, double y)
+	//fix this garbage
+	void InputHandler::checkButtons()
 	{
-		if (x > 399 && x < 801)
+		if (xCoord > 399 && xCoord < 801)
 		{
-			if (y > 59 && y < 181)
-				button1Pressed = true;
+			if (yCoord > 59 && yCoord < 181)
+			{
+				button1.mouseOvered = true;
+				if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+				{
+					button1.pressed = true;
+					button1.mouseOvered = false;
+				}
+
+				else
+				{
+					button1.mouseOvered = true;
+					button1.pressed = false;
+				}
+			}
+
 			else
-				button1Pressed = false;
+			{
+				button1.mouseOvered = false;
+				button1.pressed = false;
+			}
 		}
 		else
-			button1Pressed = false;
+		{
+			button1.mouseOvered = false;
+			button1.pressed = false;
+		}
+			
 	}
 
 }

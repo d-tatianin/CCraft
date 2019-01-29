@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "../logger/Logger.h"
+#include "../renderer/objects/ButtonStruct.h"
 #include "GLFW/glfw3.h"
 
 namespace CCraft
@@ -19,13 +20,11 @@ namespace CCraft
 		GLFWwindow* window;
 	public:
 		GameState gameState;
-		//remove this var
-		bool button1Pressed = false;
-
+		Button button1;
+		double xCoord, yCoord;
 		InputHandler(GLFWwindow* window);
 		void proccess();
 		void mouse_callback(double x, double y);
-	private:
-		void checkButtons(double x, double y);
+		void checkButtons();
 	};
 }

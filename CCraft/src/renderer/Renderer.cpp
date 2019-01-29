@@ -31,11 +31,11 @@ namespace CCraft
 		{
 			input.proccess();
 
-			if (input.button1Pressed)
-				menu.but1.pressed = true;
-			else
-				menu.but1.pressed = false;
-
+			//buttons here
+			input.checkButtons();
+			menu.button1.pressed = input.button1.pressed;
+			menu.button1.mouseOvered = input.button1.mouseOvered;
+				
 			menu.draw();
 		}
 			

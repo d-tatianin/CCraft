@@ -2,16 +2,27 @@
 extern int width;
 extern int height;
 
+//float button1_data[] = {
+//		400.0f, 660.0f, -1.0f,
+//		400.0f, 540.0f, -1.0f,
+//		800.0f, 660.0f, -1.0f,
+//		400.0f, 540.0f, -1.0f,
+//		800.0f, 540.0f, -1.0f,
+//		800.0f, 660.0f, -1.0f
+//};
+
+float button1_data[] = {
+
+	440.0f, 660.0f, -1.0f,
+	440.0f, 540.0f, -1.0f,
+	840.0f, 660.0f, -1.0f,
+	440.0f, 540.0f, -1.0f,
+	840.0f, 540.0f, -1.0f,
+	840.0f, 660.0f, -1.0f
+};
+
 namespace CCraft
 {
-	float button1_data[] = {
-		400.0f, 660.0f, -1.0f,
-		400.0f, 540.0f, -1.0f,
-		800.0f, 660.0f, -1.0f,
-		400.0f, 540.0f, -1.0f,
-		800.0f, 540.0f, -1.0f,
-		800.0f, 660.0f, -1.0f
-	};
 
 	Menu::Menu()
 		:menuShader("res/shaders/menu.shader"), button1_buffer(recalculate(button1_data, 18), sizeof(button1_data)), menuMat(1.0f)
@@ -28,10 +39,12 @@ namespace CCraft
 		menuShader.Bind();
 		menuShader.SetUniformMat4f("menuMat", menuMat);
 
-		if (but1.pressed)
-			menuShader.setVec3("color", glm::vec3(1.0f, 1.0f, 0.0f));
+		if (button1.pressed)
+			menuShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
+		else if(button1.mouseOvered)
+			menuShader.setVec3("color", glm::vec3(0.188f, 0.662f, 0.737f));
 		else
-			menuShader.setVec3("color", glm::vec3(1.0f, 0.5f, 0.0f));
+			menuShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
 
 		button_1.Bind();
 		glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -43,13 +56,25 @@ namespace CCraft
 	{
 		float unitWidth = (float)width / (float)1280;
 		float unitHeight = (float)height / (float)720;
-		for(int i(0); i<size; i++)
+
+		int widthCounter = 0;
+		int heightCounter = 1;
+
+		while (heightCounter < size)
 		{
-			if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15)
-				data[i] *= unitWidth;
-			if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16)
-				data[i] *= unitHeight;
+			data[widthCounter] *= unitWidth;
+			data[heightCounter] *= unitHeight;
+			widthCounter += 3;
+			heightCounter += 3;
 		}
+
+		//for(int i(0); i<size; i++)
+		//{
+		//	if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15)
+		//		data[i] *= unitWidth;
+		//	if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16)
+		//		data[i] *= unitHeight;
+		//}
 		
 		return data;
 	}
