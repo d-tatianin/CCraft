@@ -7,6 +7,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "../InputHandler/InputHandler.h"
+#include "objects/Button.h"
 
 
 namespace CCraft
@@ -22,6 +23,7 @@ namespace CCraft
 		GLFWwindow* window;
 		GameState gameState;
 	public:
+		Button button1;
 		InputHandler input;
 		Menu menu;
 		GLFWwindow* getWindowID();

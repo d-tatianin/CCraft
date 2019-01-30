@@ -3,8 +3,8 @@
 namespace CCraft
 {
 
-	InputHandler::InputHandler(GLFWwindow* window)
-		: logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
+	InputHandler::InputHandler(GLFWwindow* window, Button &button1)
+		: button1(button1), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
 	{
 
 	}
@@ -13,15 +13,6 @@ namespace CCraft
 	{
 		xCoord = x;
 		yCoord = y;
-
-		
-
-		//insane performance hit
-		//system("CLS");
-		//std::stringstream ss;
-		//ss << "Mouse position X:" << x << " Y:" << y;
-		//std::string message = ss.str();
-		//logger.log(message.c_str(), Logger::INFO);
 	}
 
 	void InputHandler::proccess()
@@ -40,39 +31,27 @@ namespace CCraft
 			logger.log("V press detected", Logger::INFO);
 	}
 
-	//fix this garbage
 	void InputHandler::checkButtons()
 	{
-		if (xCoord > 399 && xCoord < 801)
+		if (button1.recalculatedData[0] <= xCoord && button1.recalculatedData[2] >= xCoord && button1.recalculatedData[1] <= yCoord && button1.recalculatedData[3] >= yCoord)
 		{
-			if (yCoord > 59 && yCoord < 181)
+			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 			{
-				button1.mouseOvered = true;
-				if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-				{
-					button1.pressed = true;
-					button1.mouseOvered = false;
-				}
-
-				else
-				{
-					button1.mouseOvered = true;
-					button1.pressed = false;
-				}
+				button1.mousedOver = false;
+				button1.pressed = true;
 			}
-
 			else
 			{
-				button1.mouseOvered = false;
 				button1.pressed = false;
+				button1.mousedOver = true;
 			}
 		}
 		else
 		{
-			button1.mouseOvered = false;
+			button1.mousedOver = false;
 			button1.pressed = false;
 		}
-			
+
 	}
 
 }

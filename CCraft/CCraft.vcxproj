@@ -143,6 +143,7 @@
     <ClCompile Include="src\logger\Logger.cpp" />
     <ClCompile Include="src\renderer\Init.cpp" />
     <ClCompile Include="src\renderer\objects\Block.cpp" />
+    <ClCompile Include="src\renderer\objects\Button.cpp" />
     <ClCompile Include="src\renderer\objects\Hud.cpp" />
     <ClCompile Include="src\renderer\objects\Menu.cpp" />
     <ClCompile Include="src\renderer\Renderer.cpp" />
@@ -161,7 +162,7 @@
     <ClInclude Include="src\logger\Logger.h" />
     <ClInclude Include="src\renderer\Init.h" />
     <ClInclude Include="src\renderer\objects\Block.h" />
-    <ClInclude Include="src\renderer\objects\ButtonStruct.h" />
+    <ClInclude Include="src\renderer\objects\Button.h" />
     <ClInclude Include="src\renderer\objects\Hud.h" />
     <ClInclude Include="src\renderer\objects\Menu.h" />
     <ClInclude Include="src\renderer\Renderer.h" />

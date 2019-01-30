@@ -54,6 +54,9 @@
     <ClCompile Include="src\InputHandler\InputHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\objects\Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -815,7 +818,7 @@
     <ClInclude Include="src\InputHandler\InputHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\objects\ButtonStruct.h">
+    <ClInclude Include="src\renderer\objects\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

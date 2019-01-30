@@ -2,9 +2,19 @@
 
 namespace CCraft
 {
+	float button1_data[] = {
+
+	440.0f, 660.0f, -1.0f,
+	440.0f, 540.0f, -1.0f,
+	840.0f, 660.0f, -1.0f,
+	440.0f, 540.0f, -1.0f,
+	840.0f, 540.0f, -1.0f,
+	840.0f, 660.0f, -1.0f
+	};
 
 	Renderer::Renderer()
-		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU), input(window)
+		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU), button1(button1_data), input(window, button1),
+		menu(button1)
 	{
 
 	}
@@ -34,7 +44,7 @@ namespace CCraft
 			//buttons here
 			input.checkButtons();
 			menu.button1.pressed = input.button1.pressed;
-			menu.button1.mouseOvered = input.button1.mouseOvered;
+			menu.button1.mousedOver = input.button1.mousedOver;
 				
 			menu.draw();
 		}

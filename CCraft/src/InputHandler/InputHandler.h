@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include "../logger/Logger.h"
-#include "../renderer/objects/ButtonStruct.h"
+#include "../renderer/objects/Button.h"
 #include "GLFW/glfw3.h"
 
 namespace CCraft
@@ -15,16 +15,19 @@ namespace CCraft
 
 	class InputHandler
 	{
+	public:
+		Button button1;
 	private:
 		Logger logger;
 		GLFWwindow* window;
 	public:
 		GameState gameState;
-		Button button1;
 		double xCoord, yCoord;
-		InputHandler(GLFWwindow* window);
+		
 		void proccess();
 		void mouse_callback(double x, double y);
 		void checkButtons();
+	public:
+		InputHandler(GLFWwindow* window, Button &button1);
 	};
 }
