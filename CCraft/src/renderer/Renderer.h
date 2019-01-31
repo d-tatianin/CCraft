@@ -24,6 +24,8 @@ namespace CCraft
 		GameState gameState;
 	public:
 		Button button1;
+		Button button2;
+		Button button3;
 		InputHandler input;
 		Menu menu;
 		GLFWwindow* getWindowID();

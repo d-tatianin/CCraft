@@ -14,18 +14,21 @@ namespace CCraft
 	{
 	public:
 		Button button1;
+		Button button2;
+		Button button3;
 	private:
 		VertexArray button_1;
 		VertexBuffer button1_buffer;
-		//an example of creating a buffer for each button
-		//VertexArray button_2;
-		//VertexBuffer button2_buffer;
-		//VertexArray button_3;
-		//VertexBuffer button3_buffer;
+		VertexArray button_2;
+		VertexBuffer button2_buffer;
+		VertexArray button_3;
+		VertexBuffer button3_buffer;
 		Shader menuShader;
 		glm::mat4 menuMat;
 	public:
-		Menu(Button &button1);
+		bool quitPressed = false;
+	public:
+		Menu(Button &button1, Button &button2, Button &button3);
 		//~Menu();
 		void draw();
 		//void update();

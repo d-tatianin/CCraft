@@ -17,6 +17,8 @@ namespace CCraft
 	{
 	public:
 		Button button1;
+		Button button2;
+		Button button3;
 	private:
 		Logger logger;
 		GLFWwindow* window;
@@ -28,6 +30,6 @@ namespace CCraft
 		void mouse_callback(double x, double y);
 		void checkButtons();
 	public:
-		InputHandler(GLFWwindow* window, Button &button1);
+		InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3);
 	};
 }

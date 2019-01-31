@@ -3,8 +3,8 @@
 namespace CCraft
 {
 
-	InputHandler::InputHandler(GLFWwindow* window, Button &button1)
-		: button1(button1), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
+	InputHandler::InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3)
+		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
 	{
 
 	}
@@ -52,6 +52,44 @@ namespace CCraft
 			button1.pressed = false;
 		}
 
-	}
+		if (button2.recalculatedData[0] <= xCoord && button2.recalculatedData[2] >= xCoord && button2.recalculatedData[1] <= yCoord && button2.recalculatedData[3] >= yCoord)
+		{
+			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+			{
+				button2.mousedOver = false;
+				button2.pressed = true;
+			}
+			else
+			{
+				button2.pressed = false;
+				button2.mousedOver = true;
+			}
+		}
+		else
+		{
+			button2.mousedOver = false;
+			button2.pressed = false;
+		}
 
+		if (button3.recalculatedData[0] <= xCoord && button3.recalculatedData[2] >= xCoord && button3.recalculatedData[1] <= yCoord && button3.recalculatedData[3] >= yCoord)
+		{
+			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+			{
+				button3.mousedOver = false;
+				button3.pressed = true;
+			}
+			else
+			{
+				button3.pressed = false;
+				button3.mousedOver = true;
+			}
+		}
+		else
+		{
+			button3.mousedOver = false;
+			button3.pressed = false;
+		}
+
+
+	}
 }

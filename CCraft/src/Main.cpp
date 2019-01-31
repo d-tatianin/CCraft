@@ -21,5 +21,6 @@ int main()
 		game.render();
 	}
 
+	std::cin.get();
 	return 0;
 }
