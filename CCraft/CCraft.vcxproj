@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\renderer\objects\Game.cpp" />
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\logger\Logger.cpp" />
     <ClCompile Include="src\renderer\Init.cpp" />
@@ -158,6 +159,7 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\renderer\objects\Game.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
     <ClInclude Include="src\logger\Logger.h" />
     <ClInclude Include="src\renderer\Init.h" />

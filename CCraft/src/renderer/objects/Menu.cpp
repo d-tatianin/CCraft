@@ -33,7 +33,11 @@ namespace CCraft
 		menuShader.SetUniformMat4f("menuMat", menuMat);
 
 		if (button1.pressed)
+		{
 			menuShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
+			playPressed = true;
+		}
+			
 		else if(button1.mousedOver)
 			menuShader.setVec3("color", glm::vec3(0.188f, 0.662f, 0.737f));
 		else

@@ -34,7 +34,7 @@ namespace CCraft
 
 	Renderer::Renderer()
 		: logger("RENDERER", Logger::INFO), window(initializer.window), gameState(GameState::MENU), button1(button1_data), button2(button2_data),
-		button3(button3_data), input(window, button1, button2, button3), menu(button1, button2, button3)
+		button3(button3_data), input(window, button1, button2, button3), menu(button1, button2, button3), game()//constructor will be added later
 	{
 
 	}
@@ -54,15 +54,26 @@ namespace CCraft
 			shutDown();
 		if (menu.quitPressed)
 			shutDown();
+		if (menu.playPressed)
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			gameState = GameState::GAME;
+			menu.playPressed = false;
+		}
+		if (input.escPressed)
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			gameState = GameState::MENU;
+			input.escPressed = false;
+		}
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		input.proccess();
+
 		if (gameState == GameState::MENU)
 		{
-			input.proccess();
-
-			//buttons here
 			input.checkButtons();
 
 			menu.button1.pressed = input.button1.pressed;
@@ -74,7 +85,11 @@ namespace CCraft
 				
 			menu.draw();
 		}
-			
+		
+		else if (gameState == GameState::GAME)
+		{
+			game.draw();
+		}
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

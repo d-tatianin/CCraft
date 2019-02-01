@@ -27,13 +27,10 @@ namespace CCraft
 		glm::mat4 menuMat;
 	public:
 		bool quitPressed = false;
+		bool playPressed = false;
 	public:
 		Menu(Button &button1, Button &button2, Button &button3);
-		//~Menu();
 		void draw();
-		//void update();
-	private:
-		float* recalculate(float data[], int size);
 	};
 	
 

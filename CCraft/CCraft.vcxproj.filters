@@ -57,6 +57,9 @@
     <ClCompile Include="src\renderer\objects\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\objects\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -819,6 +822,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\objects\Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\objects\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

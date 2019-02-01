@@ -18,7 +18,7 @@ namespace CCraft
 	void InputHandler::proccess()
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			logger.log("ESC press detected", Logger::INFO);
+			escPressed = true;
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 			logger.log("W press detected", Logger::INFO);
 		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)

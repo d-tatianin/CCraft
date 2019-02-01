@@ -24,6 +24,7 @@ namespace CCraft
 		GLFWwindow* window;
 	public:
 		GameState gameState;
+		bool escPressed = false;
 		double xCoord, yCoord;
 		
 		void proccess();

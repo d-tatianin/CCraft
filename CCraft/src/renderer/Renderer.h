@@ -8,7 +8,7 @@
 #include "GLFW/glfw3.h"
 #include "../InputHandler/InputHandler.h"
 #include "objects/Button.h"
-
+#include "objects/Game.h"
 
 namespace CCraft
 {
@@ -28,6 +28,8 @@ namespace CCraft
 		Button button3;
 		InputHandler input;
 		Menu menu;
+		Game game;
+	public:
 		GLFWwindow* getWindowID();
 		Renderer();
 		void render();
