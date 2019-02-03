@@ -57,14 +57,17 @@ namespace CCraft
 		if (menu.playPressed)
 		{
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			input.gameState = GameState::GAME;
 			gameState = GameState::GAME;
 			menu.playPressed = false;
 		}
 		if (input.escPressed)
 		{
+			input.firstMouse = true;
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 			gameState = GameState::MENU;
 			input.escPressed = false;
+			input.gameState = GameState::MENU;
 		}
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -88,6 +91,8 @@ namespace CCraft
 		
 		else if (gameState == GameState::GAME)
 		{
+			input.deltaCalculate();
+			game.lookAt = input.lookAt;
 			game.draw();
 		}
 

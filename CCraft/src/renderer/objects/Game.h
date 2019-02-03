@@ -11,6 +11,15 @@ namespace CCraft
 	class Game
 	{
 	public:
+		glm::mat4 lookAt;
+		glm::mat4 projection;
+		glm::mat4 model;
+		glm::mat4 MVP;
+	private:
+		VertexArray block;
+		VertexBuffer block_buffer;
+		Shader gameShader;
+	public:
 		Game();
 		void draw();
 	};

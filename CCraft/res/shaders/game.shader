@@ -1,17 +1,13 @@
-//A set of vertex and fragment shaders to render the game menu
-
-
 #shader vertex
 
 #version 330 core
+layout(location = 0) in vec3 aPos;
 
-layout (location = 0) in vec3 position;
-
-uniform mat4 menuMat;
+uniform mat4 MVP;
 
 void main()
 {
-	gl_Position = menuMat * vec4(position, 1.0f);
+	gl_Position = MVP * vec4(aPos, 1.0f);
 }
 
 #shader fragment

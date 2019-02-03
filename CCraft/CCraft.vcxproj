@@ -159,6 +159,7 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameModules\Camera.h" />
     <ClInclude Include="src\renderer\objects\Game.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
     <ClInclude Include="src\logger\Logger.h" />
@@ -415,6 +416,7 @@
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\game.shader" />
     <None Include="res\shaders\menu.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />

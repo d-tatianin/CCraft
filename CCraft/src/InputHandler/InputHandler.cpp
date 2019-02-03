@@ -4,15 +4,35 @@ namespace CCraft
 {
 
 	InputHandler::InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3)
-		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU)
+		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU), lookAt(1.0f)
 	{
-
+		lookAt = camera.GetViewMatrix();
 	}
 
 	void InputHandler::mouse_callback(double x, double y)
 	{
 		xCoord = x;
 		yCoord = y;
+
+		if (gameState == GameState::GAME)
+		{
+			if (firstMouse)
+			{
+				lastX = x;
+				lastY = y;
+				firstMouse = false;
+			}
+
+			xoffset = x - lastX;
+			yoffset = lastY - y;
+
+			lastX = x;
+			lastY = y;
+
+			camera.ProcessMouseMovement(xoffset, yoffset);
+			lookAt = camera.GetViewMatrix();
+		}
+		
 	}
 
 	void InputHandler::proccess()
@@ -20,13 +40,26 @@ namespace CCraft
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			escPressed = true;
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-			logger.log("W press detected", Logger::INFO);
+		{
+			camera.ProcessKeyboard(Camera_Movement::FORWARD, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
+			
 		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-			logger.log("S press detected", Logger::INFO);
+		{
+			camera.ProcessKeyboard(Camera_Movement::BACKWARD, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-			logger.log("A press detected", Logger::INFO);
+		{
+			camera.ProcessKeyboard(Camera_Movement::LEFT, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
 		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-			logger.log("D press detected", Logger::INFO);
+		{
+			camera.ProcessKeyboard(Camera_Movement::RIGHT, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
 		if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
 			logger.log("V press detected", Logger::INFO);
 	}
@@ -91,5 +124,12 @@ namespace CCraft
 		}
 
 
+	}
+	
+	void InputHandler::deltaCalculate()
+	{
+		currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
 	}
 }

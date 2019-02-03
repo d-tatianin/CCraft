@@ -827,6 +827,9 @@
     <ClInclude Include="src\renderer\objects\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameModules\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1223,5 +1226,6 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="res\shaders\menu.shader" />
+    <None Include="res\shaders\game.shader" />
   </ItemGroup>
 </Project>
