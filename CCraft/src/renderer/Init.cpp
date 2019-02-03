@@ -15,12 +15,12 @@ namespace CCraft
 	{
 		enum class configSetting
 		{
-			NONE = -1, WIDTH = 0, HEIGHT = 1
+			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2
 		};
 
 		std::ifstream stream(configPath);
 		std::string line;
-		std::stringstream ss[2];
+		std::stringstream ss[3];
 
 		configSetting setting = configSetting::NONE;
 
@@ -31,17 +31,25 @@ namespace CCraft
 				setting = configSetting::WIDTH;
 			else if (line.find("height:") != std::string::npos)
 				setting = configSetting::HEIGHT;
+			else if (line.find("mouse sensitivity:") != std::string::npos)
+				setting = configSetting::SENS;
 			else if (setting != configSetting::NONE)
 				ss[(int)setting] << line;
 		}
 
 		width = atoi((ss[0].str()).c_str());
 		height = atoi((ss[1].str()).c_str());
+		sensitivity = atof((ss[2].str()).c_str());
 
 		if (width != -1 && height != -1)
 			logger.log("Configuration file successfully parsed.", Logger::INFO);
 		else
 			logger.log("Error parsing configuration file.", Logger::FATAL);
+		if (sensitivity == 0.0f)
+		{
+			logger.log("Couldn't find sensitivity settings in configuration, applying default settings.", Logger::WARN);
+			sensitivity = 0.08f;
+		}
 	}
 
 

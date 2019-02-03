@@ -4,5 +4,6 @@ width:
 1280
 height: 
 720
-
+mouse sensitivity:
+0.1
 

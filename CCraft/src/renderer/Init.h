@@ -15,6 +15,7 @@ namespace CCraft
 		Logger logger;
 		GLFWwindow* window;
 	public:
+		float sensitivity = 0.0f;
 		Initializer();
 	private:
 		void parseConfig(const std::string& configPath);
