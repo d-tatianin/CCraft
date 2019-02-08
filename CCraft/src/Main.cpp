@@ -5,6 +5,7 @@ int width = -1;
 int height = -1;
 
 CCraft::Renderer game;
+CCraft::Shader gameShader("res/shaders/game.shader");
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {

@@ -2,6 +2,7 @@
 //tempo
 extern int width;
 extern int height;
+extern CCraft::Shader gameShader;
 
 float vertices[] = {
 	//back right
@@ -62,7 +63,7 @@ float vertices[] = {
 namespace CCraft {
 
 	Game::Game()
-		: lookAt(1.0f), projection(1.0f), model(1.0f), block_buffer(vertices, sizeof(vertices)), gameShader("res/shaders/game.shader")
+		: lookAt(1.0f), projection(1.0f), block_buffer(vertices, sizeof(vertices))
 	{
 		projection = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);
 		VertexBufferLayout block_layout;
@@ -75,10 +76,11 @@ namespace CCraft {
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		gameShader.Bind();
-		gameShader.SetUniformMat4f("MVP", projection*model*lookAt);
-		gameShader.setVec3("color", glm::vec3(0.0f, 1.0f, 0.0f));
+		gameShader.SetUniformMat4f("projection", projection);
+		gameShader.SetUniformMat4f("view", lookAt);
+		gameShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
 		block.Bind();
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		chunks.draw();
 	}
 
 }

@@ -139,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameModules\ChunkController.cpp" />
     <ClCompile Include="src\renderer\objects\Game.cpp" />
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\logger\Logger.cpp" />
     <ClCompile Include="src\renderer\Init.cpp" />
-    <ClCompile Include="src\renderer\objects\Block.cpp" />
     <ClCompile Include="src\renderer\objects\Button.cpp" />
     <ClCompile Include="src\renderer\objects\Hud.cpp" />
     <ClCompile Include="src\renderer\objects\Menu.cpp" />
@@ -159,12 +159,15 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameModules\Block.h" />
+    <ClInclude Include="src\GameModules\Chunk.h" />
+    <ClInclude Include="src\GameModules\ChunkController.h" />
     <ClInclude Include="src\GameModules\Camera.h" />
+    <ClInclude Include="src\GameModules\Layer.h" />
     <ClInclude Include="src\renderer\objects\Game.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
     <ClInclude Include="src\logger\Logger.h" />
     <ClInclude Include="src\renderer\Init.h" />
-    <ClInclude Include="src\renderer\objects\Block.h" />
     <ClInclude Include="src\renderer\objects\Button.h" />
     <ClInclude Include="src\renderer\objects\Hud.h" />
     <ClInclude Include="src\renderer\objects\Menu.h" />

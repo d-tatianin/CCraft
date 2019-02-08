@@ -5,20 +5,18 @@
 #include "../Shader.h"
 #include "../../vendor/glm/glm.hpp"
 #include "../../vendor/glm/gtc/matrix_transform.hpp"
-
+#include "../../GameModules/ChunkController.h"
 namespace CCraft
 {
 	class Game
 	{
 	public:
+		ChunkController chunks;
 		glm::mat4 lookAt;
 		glm::mat4 projection;
-		glm::mat4 model;
-		glm::mat4 MVP;
 	private:
 		VertexArray block;
 		VertexBuffer block_buffer;
-		Shader gameShader;
 	public:
 		Game();
 		void draw();
