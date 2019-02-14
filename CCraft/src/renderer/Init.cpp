@@ -15,12 +15,12 @@ namespace CCraft
 	{
 		enum class configSetting
 		{
-			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2
+			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3
 		};
 
 		std::ifstream stream(configPath);
 		std::string line;
-		std::stringstream ss[3];
+		std::stringstream ss[4];
 
 		configSetting setting = configSetting::NONE;
 
@@ -33,6 +33,8 @@ namespace CCraft
 				setting = configSetting::HEIGHT;
 			else if (line.find("mouse sensitivity:") != std::string::npos)
 				setting = configSetting::SENS;
+			else if (line.find("draw distance:") != std::string::npos)
+				setting = configSetting::DDISTANCE;
 			else if (setting != configSetting::NONE)
 				ss[(int)setting] << line;
 		}
@@ -40,15 +42,23 @@ namespace CCraft
 		width = atoi((ss[0].str()).c_str());
 		height = atoi((ss[1].str()).c_str());
 		sensitivity = atof((ss[2].str()).c_str());
+		drawDistance = atoi((ss[3].str()).c_str());
 
-		if (width != -1 && height != -1)
-			logger.log("Configuration file successfully parsed.", Logger::INFO);
-		else
-			logger.log("Error parsing configuration file.", Logger::FATAL);
+		if (width < 300 || height < 300)
+		{
+			logger.log("Couldn't find resolution settings in configuration file, applying default settings.", Logger::WARN);
+			width = 800;
+			height = 600;
+		}
 		if (sensitivity == 0.0f)
 		{
-			logger.log("Couldn't find sensitivity settings in configuration, applying default settings.", Logger::WARN);
+			logger.log("Couldn't find sensitivity settings in configuration file, applying default settings.", Logger::WARN);
 			sensitivity = 0.08f;
+		}
+		if (drawDistance == -1)
+		{
+			logger.log("Couldn't find draw distance settings in configuration file, applying default settings.", Logger::WARN);
+			drawDistance = 1;
 		}
 	}
 

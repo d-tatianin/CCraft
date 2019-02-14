@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\renderer\IndexBuffer.cpp" />
     <ClCompile Include="src\GameModules\ChunkController.cpp" />
     <ClCompile Include="src\renderer\objects\Game.cpp" />
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
@@ -159,6 +160,7 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\renderer\IndexBuffer.h" />
     <ClInclude Include="src\GameModules\Block.h" />
     <ClInclude Include="src\GameModules\Chunk.h" />
     <ClInclude Include="src\GameModules\ChunkController.h" />

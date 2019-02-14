@@ -1,5 +1,6 @@
 #pragma once
 #include "Chunk.h"
+#include "../logger/Logger.h"
 
 namespace CCraft
 {
@@ -7,9 +8,22 @@ namespace CCraft
 	{
 	public:
 		std::vector<Chunk> chunks;
+		int drawDistance;
+	private:
+		glm::mat4* blocks;
+		Logger logger;
+		int maximumBlocks;
+		unsigned int instanceBuffer;
+		int usedBlocks;
 	public:
-		ChunkController();
+		ChunkController(int drawDistance);
+		~ChunkController();
 		void draw();
+		void initBlockArray();
+		void updateCoordinates();
+		void bind();
+	private:
+		int calculateSize(int dd);
 	};
 
 }

@@ -16,6 +16,7 @@ namespace CCraft
 		GLFWwindow* window;
 	public:
 		float sensitivity = 0.0f;
+		int drawDistance = -1;
 		Initializer();
 	private:
 		void parseConfig(const std::string& configPath);

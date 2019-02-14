@@ -7,3 +7,6 @@ height:
 mouse sensitivity:
 0.1
 
+//Setting this to 0 only draws the chunk player is currently on
+draw distance:
+0

@@ -11,6 +11,7 @@ namespace CCraft
 
 	class Chunk
 	{
+		friend class ChunkController;
 	private:
 		float baseY = 64.0f;
 		float baseGrassLayer = 63.0f;

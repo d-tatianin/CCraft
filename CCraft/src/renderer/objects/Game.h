@@ -1,6 +1,7 @@
 #pragma once
 #include "../VertexArray.h"
 #include "../VertexBuffer.h"
+#include "../IndexBuffer.h"
 #include "../VertexBufferLayout.h"
 #include "../Shader.h"
 #include "../../vendor/glm/glm.hpp"
@@ -17,8 +18,9 @@ namespace CCraft
 	private:
 		VertexArray block;
 		VertexBuffer block_buffer;
+		IndexBuffer block_indices;
 	public:
-		Game();
+		Game(int drawDistance);
 		void draw();
 	};
 }

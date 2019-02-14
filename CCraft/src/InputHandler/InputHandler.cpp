@@ -37,6 +37,12 @@ namespace CCraft
 
 	void InputHandler::proccess()
 	{
+		//wireframe mode for debug purposes
+		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			escPressed = true;
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
