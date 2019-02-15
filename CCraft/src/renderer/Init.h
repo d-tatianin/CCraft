@@ -17,6 +17,7 @@ namespace CCraft
 	public:
 		float sensitivity = 0.0f;
 		int drawDistance = -1;
+		int vsync = 0;
 		Initializer();
 	private:
 		void parseConfig(const std::string& configPath);

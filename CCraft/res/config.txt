@@ -1,12 +1,10 @@
-Change the configuration file to change resolution, etc. Restart the game to apply new settings.
-
 width: 
 1280
 height: 
 720
 mouse sensitivity:
 0.1
-
-//Setting this to 0 only draws the chunk player is currently on
 draw distance:
+0
+lock fps:
 0

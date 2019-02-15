@@ -15,12 +15,12 @@ namespace CCraft
 	{
 		enum class configSetting
 		{
-			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3
+			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3, VSYNC = 4
 		};
 
 		std::ifstream stream(configPath);
 		std::string line;
-		std::stringstream ss[4];
+		std::stringstream ss[5];
 
 		configSetting setting = configSetting::NONE;
 
@@ -35,6 +35,8 @@ namespace CCraft
 				setting = configSetting::SENS;
 			else if (line.find("draw distance:") != std::string::npos)
 				setting = configSetting::DDISTANCE;
+			else if (line.find("lock fps:") != std::string::npos)
+				setting = configSetting::VSYNC;
 			else if (setting != configSetting::NONE)
 				ss[(int)setting] << line;
 		}
@@ -43,6 +45,8 @@ namespace CCraft
 		height = atoi((ss[1].str()).c_str());
 		sensitivity = atof((ss[2].str()).c_str());
 		drawDistance = atoi((ss[3].str()).c_str());
+		vsync = atoi((ss[4].str()).c_str());
+		
 
 		if (width < 300 || height < 300)
 		{
@@ -81,6 +85,7 @@ namespace CCraft
 		else
 		{
 			glfwMakeContextCurrent(window);
+			glfwSwapInterval(vsync);
 			logger.log("Window successfully initialized.", Logger::INFO);
 		}
 

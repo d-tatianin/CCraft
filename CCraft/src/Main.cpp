@@ -16,7 +16,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 
 int main()
 {
-	glfwSwapInterval(1);
 	glfwSetCursorPosCallback(game.getWindowID(), mouse_callback);
 
 	while (game.running)
