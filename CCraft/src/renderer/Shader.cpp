@@ -7,7 +7,7 @@
 namespace CCraft 
 {
 	Shader::Shader(const std::string& filepath)
-		: logger("SHADER", Logger::INFO), m_FilePath(filepath), m_RendererID(0)
+		: logger("SHADER", Logger::level::INFO), m_FilePath(filepath), m_RendererID(0)
 	{
 		ShaderProgramSource source = ParseShader(filepath);
 		m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
@@ -58,14 +58,14 @@ namespace CCraft
 			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
 			char* message = (char*)alloca(length * sizeof(char));
 			glGetShaderInfoLog(id, length, &length, message);
-			logger.log("Failed to compile shader!", Logger::FATAL);
-			logger.log(message, Logger::FATAL);
+			logger.log("Failed to compile shader!", Logger::level::FATAL);
+			logger.log(message, Logger::level::FATAL);
 			glDeleteShader(id);
 			return 0;
 		}
 		else
 		{
-			logger.log("Successfully compiled shader!", Logger::INFO);
+			logger.log("Successfully compiled shader!", Logger::level::INFO);
 			return id;
 		}
 	}
@@ -134,7 +134,7 @@ namespace CCraft
 			std::stringstream ss;
 			ss << "Warning: uniform ' " << name << "'does not exist!'";
 			std::string message = ss.str();
-			logger.log(message.c_str(), Logger::WARN);
+			logger.log(message.c_str(), Logger::level::WARN);
 		}
 		m_UniformLocationCache[name] = location;
 		return location;

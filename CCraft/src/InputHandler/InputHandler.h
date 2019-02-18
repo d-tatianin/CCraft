@@ -17,9 +17,9 @@ namespace CCraft
 	class InputHandler
 	{
 	public:
-		Button button1;
-		Button button2;
-		Button button3;
+		Button& button1;
+		Button& button2;
+		Button& button3;
 	private:
 		Logger logger;
 		GLFWwindow* window;

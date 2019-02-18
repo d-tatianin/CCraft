@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
-#include <string>
 
-namespace CCraft {
-
+namespace CCraft
+{
 	class Logger
 	{
 	public:
-		enum level
+		enum class level
 		{
 			INFO = 0, WARN = 1, FATAL = 2
 		};
@@ -19,7 +18,8 @@ namespace CCraft {
 		Logger(const char* programName, level filter);
 		void log(const char* message, level lvl);
 		void setFilter(level lvl);
-		std::string filterToString(level lvl);
+	private:
+		const char* filterToString(level lvl);
 	};
 
 }

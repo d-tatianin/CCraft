@@ -1,25 +1,23 @@
 #include "Logger.h"
 
-namespace CCraft {
-
+namespace CCraft
+{
 	Logger::Logger(const char* programName)
+		: filter(level::INFO), programName(programName)
 	{
-		this->programName = programName;
-		filter = level::INFO;
 		setFilter(filter);
 	}
 
 	Logger::Logger(const char* programName, level filter)
+		: filter(filter), programName(programName)
 	{
-		this->programName = programName;
-		this->filter = filter;
 		setFilter(filter);
 	}
 
 	void Logger::log(const char* message, level lvl)
 	{
-		std::string level = filterToString(lvl);
-		if (lvl >= filter) 
+		const char* level = filterToString(lvl);
+		if (lvl >= filter)
 			std::cout << programName << "::" << level << "::" << message << std::endl;
 	}
 
@@ -28,15 +26,23 @@ namespace CCraft {
 		filter = lvl;
 	}
 
-	std::string Logger::filterToString(level lvl)
+	const char* Logger::filterToString(level lvl)
 	{
-		std::string enumToString;
 		if (lvl == level::INFO)
-			enumToString = "INFO";
-		if (lvl == level::WARN)
-			enumToString = "WARNING";
-		if (lvl == level::FATAL)
-			enumToString = "FATAL";
-		return enumToString;
+		{
+			const char* string = "INFO";
+			return string;
+		}
+		else if (lvl == level::WARN)
+		{
+			const char* string = "WARNING";
+			return string;
+		}
+		else if (lvl == level::FATAL)
+		{
+			const char* string = "FATAL";
+			return string;
+		}
 	}
 }
+

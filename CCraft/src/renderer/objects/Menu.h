@@ -13,9 +13,9 @@ namespace CCraft
 	class Menu
 	{
 	public:
-		Button button1;
-		Button button2;
-		Button button3;
+		Button& button1;
+		Button& button2;
+		Button& button3;
 	private:
 		VertexArray button_1;
 		VertexBuffer button1_buffer;

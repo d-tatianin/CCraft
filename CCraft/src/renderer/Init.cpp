@@ -6,7 +6,7 @@ extern int height;
 namespace CCraft
 {
 	Initializer::Initializer()
-		: logger("INITIALIZER", Logger::INFO)
+		: logger("INITIALIZER", Logger::level::INFO)
 	{
 		launch();
 	}
@@ -50,18 +50,18 @@ namespace CCraft
 
 		if (width < 300 || height < 300)
 		{
-			logger.log("Couldn't find resolution settings in configuration file, applying default settings.", Logger::WARN);
+			logger.log("Couldn't find resolution settings in configuration file, applying default settings.", Logger::level::WARN);
 			width = 800;
 			height = 600;
 		}
 		if (sensitivity == 0.0f)
 		{
-			logger.log("Couldn't find sensitivity settings in configuration file, applying default settings.", Logger::WARN);
+			logger.log("Couldn't find sensitivity settings in configuration file, applying default settings.", Logger::level::WARN);
 			sensitivity = 0.08f;
 		}
 		if (drawDistance == -1)
 		{
-			logger.log("Couldn't find draw distance settings in configuration file, applying default settings.", Logger::WARN);
+			logger.log("Couldn't find draw distance settings in configuration file, applying default settings.", Logger::level::WARN);
 			drawDistance = 1;
 		}
 	}
@@ -79,14 +79,14 @@ namespace CCraft
 
 		if (window == NULL)
 		{
-			logger.log("Couldn't initialize the window.", Logger::FATAL);
+			logger.log("Couldn't initialize the window.", Logger::level::FATAL);
 			glfwTerminate();
 		}
 		else
 		{
 			glfwMakeContextCurrent(window);
 			glfwSwapInterval(vsync);
-			logger.log("Window successfully initialized.", Logger::INFO);
+			logger.log("Window successfully initialized.", Logger::level::INFO);
 		}
 
 	}
@@ -95,10 +95,10 @@ namespace CCraft
 	{
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			logger.log("Failed to initialize GLAD.", Logger::FATAL);
+			logger.log("Failed to initialize GLAD.", Logger::level::FATAL);
 		}
 		else
-			logger.log("OpenGL successfully initialized.", Logger::INFO);
+			logger.log("OpenGL successfully initialized.", Logger::level::INFO);
 	}
 
 	void Initializer::launch()

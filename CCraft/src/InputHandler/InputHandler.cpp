@@ -4,7 +4,8 @@ namespace CCraft
 {
 
 	InputHandler::InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3)
-		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::INFO), window(window), gameState(GameState::MENU), lookAt(1.0f)
+		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::level::INFO),
+		window(window), gameState(GameState::MENU), lookAt(1.0f)
 	{
 		lookAt = camera.GetViewMatrix();
 	}
@@ -67,7 +68,7 @@ namespace CCraft
 			lookAt = camera.GetViewMatrix();
 		}
 		if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
-			logger.log("V press detected", Logger::INFO);
+			logger.log("V press detected", Logger::level::INFO);
 	}
 
 	void InputHandler::checkButtons()

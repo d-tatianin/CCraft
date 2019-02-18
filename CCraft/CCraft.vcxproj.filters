@@ -63,9 +63,13 @@
     <ClCompile Include="src\renderer\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\ButtonParser\ButtonParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
+    <Text Include="res\buttons.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\stb_image\stb_image.h">
@@ -845,6 +849,9 @@
     <ClInclude Include="src\renderer\IndexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\ButtonParser\ButtonParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1242,5 +1249,6 @@
     </None>
     <None Include="res\shaders\menu.shader" />
     <None Include="res\shaders\game.shader" />
+    <None Include="src\logger\LICENSE" />
   </ItemGroup>
 </Project>

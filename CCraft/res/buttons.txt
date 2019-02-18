@@ -1,0 +1,21 @@
+Button 1 {
+	Coordinates:
+		440.0f, 660.0f,
+		440.0f, 540.0f,
+		840.0f, 660.0f,
+		440.0f, 540.0f,
+		840.0f, 540.0f,
+		840.0f, 660.0f 
+
+	TextureFilePath: 
+		res/texutres/button1.jpg
+
+	ColorSettings:
+		Default: blue
+		Pressed: red
+		MousedOver: green
+}
+
+
+
+

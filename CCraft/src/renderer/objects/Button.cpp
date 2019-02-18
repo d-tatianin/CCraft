@@ -17,12 +17,12 @@ namespace CCraft
 		int widthCounter = 0;
 		int heightCounter = 1;
 
-		while (heightCounter < 18)
+		while (heightCounter < 25)
 		{
 			data[widthCounter] *= unitWidth;
 			data[heightCounter] *= unitHeight;
-			widthCounter += 3;
-			heightCounter += 3;
+			widthCounter += 5;
+			heightCounter += 5;
 		}
 	}
 
@@ -35,7 +35,7 @@ namespace CCraft
 		float biggestX = -200.0f;
 		float biggestY = -200.0f;
 
-		while (heightCounter < 16)
+		while (heightCounter < 23)
 		{
 			if (data[widthCounter] < smallestX)
 				smallestX = data[widthCounter];
@@ -45,8 +45,8 @@ namespace CCraft
 				smallestY = data[heightCounter];
 			if (data[heightCounter] > biggestY)
 				biggestY = data[heightCounter];
-			widthCounter += 3;
-			heightCounter += 3;
+			widthCounter += 5;
+			heightCounter += 5;
 		}
 
 		recalculatedData[0] = smallestX;
