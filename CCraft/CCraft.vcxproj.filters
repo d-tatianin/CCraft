@@ -66,6 +66,9 @@
     <ClCompile Include="src\renderer\ButtonParser\ButtonParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -850,6 +853,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\ButtonParser\ButtonParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
