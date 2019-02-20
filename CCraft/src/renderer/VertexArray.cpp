@@ -10,7 +10,7 @@ namespace CCraft
 
 	VertexArray::~VertexArray()
 	{
-		glDeleteVertexArrays(1, &m_RendererID);
+		//glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout)

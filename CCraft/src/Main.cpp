@@ -8,6 +8,7 @@ CCraft::Renderer game;
 
 //Has to be initialized here because multiple classes require access to the shader.
 CCraft::Shader gameShader("res/shaders/game.shader");
+CCraft::Shader menuShader("res/shaders/menu.shader");
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {

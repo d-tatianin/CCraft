@@ -2,40 +2,9 @@
 
 namespace CCraft
 {
-	float button1_data[] = {
-
-	440.0f, 660.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 540.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 660.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 540.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 540.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 660.0f, -1.0f, 999.0f, 999.0f
-
-	};
-
-	float button2_data[] = {
-
-	440.0f, 420.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 300.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 420.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 300.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 300.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 420.0f, -1.0f, 999.0f, 999.0f
-	};
-
-	float button3_data[] = {
-
-	440.0f, 180.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 60.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 180.0f, -1.0f, 999.0f, 999.0f,
-	440.0f, 60.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 60.0f, -1.0f, 999.0f, 999.0f,
-	840.0f, 180.0f, -1.0f, 999.0f, 999.0f
-	};
-
 	Renderer::Renderer()
-		: logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU), button1(button1_data), button2(button2_data),
-		button3(button3_data), input(window, button1, button2, button3), menu(button1, button2, button3), game(initializer.drawDistance)
+		: logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
+		input(window, parser.buttons, gameState), menu(parser.buttons), game(initializer.drawDistance)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
 	}
@@ -53,16 +22,28 @@ namespace CCraft
 	{
 		if (glfwWindowShouldClose(window))
 			shutDown();
-		if (menu.quitPressed)
-			shutDown();
-		if (menu.playPressed)
+		for (Button &but : parser.buttons)
 		{
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-			input.gameState = GameState::GAME;
-			gameState = GameState::GAME;
-			menu.playPressed = false;
+			if (but.onClick == Button::Action::PLAY)
+			{
+				if (but.pressed)
+				{
+					glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+					gameState = GameState::GAME;
+				}
+					
+			}
+			else if (but.onClick == Button::Action::EXIT)
+			{
+				if (but.pressed)
+					shutDown();
+			}
+			else if (but.onClick == Button::Action::SETTINGS)
+			{
+				if (but.pressed)
+					logger.log("Settings menu has not yet been implemented.", Logger::level::INFO);
+			}
 		}
-		//todo pressing escape while in menu returns to game
 		if (input.escPressed)
 		{
 			input.firstMouse = true;

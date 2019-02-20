@@ -1,7 +1,7 @@
 width: 
-1280
+800
 height: 
-720
+600
 mouse sensitivity:
 0.1
 draw distance:

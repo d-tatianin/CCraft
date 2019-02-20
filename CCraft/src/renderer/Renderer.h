@@ -8,6 +8,7 @@
 #include "../InputHandler/InputHandler.h"
 #include "objects/Button.h"
 #include "objects/Game.h"
+#include "ButtonParser/ButtonParser.h"
 
 namespace CCraft
 {
@@ -21,10 +22,8 @@ namespace CCraft
 		Logger logger;
 		GLFWwindow* window;
 		GameState gameState;
+		ButtonParser parser;
 	public:
-		Button button1;
-		Button button2;
-		Button button3;
 		InputHandler input;
 		Menu menu;
 		Game game;

@@ -16,15 +16,12 @@ namespace CCraft
 
 	class InputHandler
 	{
-	public:
-		Button& button1;
-		Button& button2;
-		Button& button3;
 	private:
 		Logger logger;
 		GLFWwindow* window;
+		std::vector<Button> &buttons;
 	public:
-		GameState gameState;
+		GameState &gameState;
 		Camera camera;
 		glm::mat4 lookAt;
 		float deltaTime;
@@ -39,6 +36,6 @@ namespace CCraft
 		void checkButtons();
 		void deltaCalculate();
 	public:
-		InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3);
+		InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState);
 	};
 }

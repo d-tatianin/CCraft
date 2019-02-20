@@ -3,9 +3,9 @@
 namespace CCraft
 {
 
-	InputHandler::InputHandler(GLFWwindow* window, Button &button1, Button &button2, Button &button3)
-		: button1(button1), button2(button2), button3(button3), logger("INPUT", Logger::level::INFO),
-		window(window), gameState(GameState::MENU), lookAt(1.0f)
+	InputHandler::InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState)
+		: logger("INPUT", Logger::level::INFO), window(window), buttons(buttons),
+		gameState(gameState), lookAt(1.0f)
 	{
 		lookAt = camera.GetViewMatrix();
 	}
@@ -73,61 +73,26 @@ namespace CCraft
 
 	void InputHandler::checkButtons()
 	{
-		if (button1.recalculatedData[0] <= xCoord && button1.recalculatedData[2] >= xCoord && button1.recalculatedData[1] <= yCoord && button1.recalculatedData[3] >= yCoord)
+		for (Button &btn : buttons)
 		{
-			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+			if (btn.recalculatedData[0] <= xCoord && btn.recalculatedData[2] >= xCoord && btn.recalculatedData[1] <= yCoord && btn.recalculatedData[3] >= yCoord)
 			{
-				button1.mousedOver = false;
-				button1.pressed = true;
+				if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+				{
+					btn.mousedOver = false;
+					btn.pressed = true;
+				}
+				else
+				{
+					btn.pressed = false;
+					btn.mousedOver = true;
+				}
 			}
 			else
 			{
-				button1.pressed = false;
-				button1.mousedOver = true;
+				btn.mousedOver = false;
+				btn.pressed = false;
 			}
-		}
-		else
-		{
-			button1.mousedOver = false;
-			button1.pressed = false;
-		}
-
-		if (button2.recalculatedData[0] <= xCoord && button2.recalculatedData[2] >= xCoord && button2.recalculatedData[1] <= yCoord && button2.recalculatedData[3] >= yCoord)
-		{
-			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-			{
-				button2.mousedOver = false;
-				button2.pressed = true;
-			}
-			else
-			{
-				button2.pressed = false;
-				button2.mousedOver = true;
-			}
-		}
-		else
-		{
-			button2.mousedOver = false;
-			button2.pressed = false;
-		}
-
-		if (button3.recalculatedData[0] <= xCoord && button3.recalculatedData[2] >= xCoord && button3.recalculatedData[1] <= yCoord && button3.recalculatedData[3] >= yCoord)
-		{
-			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-			{
-				button3.mousedOver = false;
-				button3.pressed = true;
-			}
-			else
-			{
-				button3.pressed = false;
-				button3.mousedOver = true;
-			}
-		}
-		else
-		{
-			button3.mousedOver = false;
-			button3.pressed = false;
 		}
 
 

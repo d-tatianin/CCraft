@@ -1,21 +1,59 @@
-Button 1 {
+Button {
 	Coordinates:
-		440.0f, 660.0f,
-		440.0f, 540.0f,
-		840.0f, 660.0f,
-		440.0f, 540.0f,
-		840.0f, 540.0f,
-		840.0f, 660.0f 
+		440.0f 660.0f
+		440.0f 540.0f
+		840.0f 660.0f
+		840.0f 660.0f
+		840.0f 540.0f
+		440.0f 540.0f
 
 	TextureFilePath: 
-		res/texutres/button1.jpg
+		res/textures/button1.png
 
 	ColorSettings:
 		Default: blue
 		Pressed: red
 		MousedOver: green
+
+	OnClick: play
 }
 
+Button {
+	Coordinates:
+		440.0f 420.0f
+		440.0f 300.0f
+		840.0f 420.0f
+		840.0f 420.0f
+		840.0f 300.0f
+		440.0f 300.0f
 
+	TextureFilePath: 
+		res/textures/button1.png
 
+	ColorSettings:
+		Default: blue
+		Pressed: red
+		MousedOver: green
 
+	OnClick: settings
+}
+
+Button {
+	Coordinates:
+		440.0f 180.0f
+		440.0f 60.0f
+		840.0f 180.0f
+		840.0f 180.0f
+		840.0f 60.0f
+		440.0f 60.0f
+
+	TextureFilePath: 
+		res/textures/button1.png
+
+	ColorSettings:
+		Default: blue
+		Pressed: red
+		MousedOver: green
+
+	OnClick: exit
+}

@@ -1,4 +1,5 @@
 #include "VertexBuffer.h"
+#include <iostream>
 namespace CCraft
 {
 	VertexBuffer::VertexBuffer(const void* data, unsigned int size)
@@ -10,7 +11,7 @@ namespace CCraft
 
 	VertexBuffer::~VertexBuffer()
 	{
-		glDeleteBuffers(1, &m_RendererID);
+		//glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void VertexBuffer::Bind() const
