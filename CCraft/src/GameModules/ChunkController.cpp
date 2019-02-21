@@ -15,7 +15,6 @@ namespace CCraft
 		glDrawElementsInstanced(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0, usedBlocks);
 	}
 
-	//not the best way to do this?
 	void ChunkController::bind()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, instanceBuffer);

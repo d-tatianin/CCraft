@@ -46,7 +46,7 @@ namespace CCraft
 
 		width = atoi((ss[0].str()).c_str());
 		height = atoi((ss[1].str()).c_str());
-		sensitivity = atof((ss[2].str()).c_str());
+		sensitivity = strtof(ss[2].str().c_str(), 0);
 		drawDistance = atoi((ss[3].str()).c_str());
 		vsync = atoi((ss[4].str()).c_str());
 		fullscreen = atoi((ss[5].str()).c_str());

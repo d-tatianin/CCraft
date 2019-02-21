@@ -17,10 +17,5 @@ namespace CCraft
 	public:
 		Block(glm::mat4 translation, int id)
 			: id(id), coordinates(translation) {}
-		void draw()
-		{
-			gameShader.SetUniformMat4f("model", coordinates);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
 	};
 }

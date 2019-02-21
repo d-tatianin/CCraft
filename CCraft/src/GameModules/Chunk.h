@@ -39,11 +39,5 @@ namespace CCraft
 				y--;
 			}
 		}
-
-		void draw()
-		{
-			for (Layer layr : layers)
-				layr.draw();
-		}
 	};
 }

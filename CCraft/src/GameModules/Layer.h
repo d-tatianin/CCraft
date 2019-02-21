@@ -82,11 +82,5 @@ namespace CCraft
 				}
 			}
 		}
-
-		void draw()
-		{
-			for (Block blck : blocks)
-				blck.draw();
-		}
 	};
 }
