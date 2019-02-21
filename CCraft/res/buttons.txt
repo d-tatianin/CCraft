@@ -28,7 +28,7 @@ Button {
 		440.0f 300.0f
 
 	TextureFilePath: 
-		res/textures/button1.png
+		res/textures/button2.png
 
 	ColorSettings:
 		Default: blue
@@ -48,7 +48,7 @@ Button {
 		440.0f 60.0f
 
 	TextureFilePath: 
-		res/textures/button1.png
+		res/textures/button3.png
 
 	ColorSettings:
 		Default: blue
