@@ -15,12 +15,13 @@ namespace CCraft
 	{
 		enum class configSetting
 		{
-			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3, VSYNC = 4
+			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3, 
+			VSYNC = 4, FULLSCREEN = 5
 		};
 
 		std::ifstream stream(configPath);
 		std::string line;
-		std::stringstream ss[5];
+		std::stringstream ss[6];
 
 		configSetting setting = configSetting::NONE;
 
@@ -37,6 +38,8 @@ namespace CCraft
 				setting = configSetting::DDISTANCE;
 			else if (line.find("lock fps:") != std::string::npos)
 				setting = configSetting::VSYNC;
+			else if (line.find("full screen:") != std::string::npos)
+				setting = configSetting::FULLSCREEN;
 			else if (setting != configSetting::NONE)
 				ss[(int)setting] << line;
 		}
@@ -46,6 +49,7 @@ namespace CCraft
 		sensitivity = atof((ss[2].str()).c_str());
 		drawDistance = atoi((ss[3].str()).c_str());
 		vsync = atoi((ss[4].str()).c_str());
+		fullscreen = atoi((ss[5].str()).c_str());
 		
 
 		if (width < 300 || height < 300)
@@ -75,7 +79,10 @@ namespace CCraft
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		window = glfwCreateWindow(width, height, "CCraft", NULL, NULL);
+		if(fullscreen)
+			window = glfwCreateWindow(width, height, "CCraft", glfwGetPrimaryMonitor(), NULL);
+		else 
+			window = glfwCreateWindow(width, height, "CCraft", NULL, NULL);
 
 		if (window == NULL)
 		{

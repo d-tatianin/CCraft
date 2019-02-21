@@ -14,6 +14,7 @@ namespace CCraft
 	private:
 		Logger logger;
 		GLFWwindow* window;
+		int fullscreen = 0;
 	public:
 		float sensitivity = 0.0f;
 		int drawDistance = -1;

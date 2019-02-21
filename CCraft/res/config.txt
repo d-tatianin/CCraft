@@ -2,6 +2,8 @@ width:
 1280
 height: 
 720
+full screen:
+0
 mouse sensitivity:
 0.1
 draw distance:
