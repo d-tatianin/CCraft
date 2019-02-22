@@ -18,12 +18,12 @@ namespace CCraft
 		enum class configSetting
 		{
 			NONE = -1, WIDTH = 0, HEIGHT = 1, SENS = 2, DDISTANCE = 3, 
-			VSYNC = 4, FULLSCREEN = 5
+			VSYNC = 4, FULLSCREEN = 5, FOV = 6
 		};
 
 		std::ifstream stream(configPath);
 		std::string line;
-		std::stringstream ss[6];
+		std::stringstream ss[7];
 
 		configSetting setting = configSetting::NONE;
 
@@ -42,6 +42,8 @@ namespace CCraft
 				setting = configSetting::VSYNC;
 			else if (line.find("full screen:") != std::string::npos)
 				setting = configSetting::FULLSCREEN;
+			else if (line.find("field of view:") != std::string::npos)
+				setting = configSetting::FOV;
 			else if (setting != configSetting::NONE)
 				ss[(int)setting] << line;
 		}
@@ -52,7 +54,7 @@ namespace CCraft
 		drawDistance = atoi((ss[3].str()).c_str());
 		vsync = atoi((ss[4].str()).c_str());
 		fullscreen = atoi((ss[5].str()).c_str());
-		
+		fov = strtof(ss[6].str().c_str(), 0);
 
 		if (width < 300 || height < 300)
 		{
@@ -60,15 +62,15 @@ namespace CCraft
 			width = 800;
 			height = 600;
 		}
-		if (sensitivity == 0.0f)
+		if (!sensitivity)
 		{
 			logger.log("Couldn't find sensitivity settings in configuration file, applying default settings.", Logger::level::WARN);
 			sensitivity = 0.08f;
 		}
-		if (drawDistance == -1)
+		if (!fov)
 		{
-			logger.log("Couldn't find draw distance settings in configuration file, applying default settings.", Logger::level::WARN);
-			drawDistance = 1;
+			logger.log("Couldn't find field of view settings in configuration file, applying default settings.", Logger::level::WARN);
+			fov = 45.0f;
 		}
 	}
 

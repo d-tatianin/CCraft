@@ -15,10 +15,11 @@ namespace CCraft
 		Logger logger;
 		GLFWwindow* window;
 	public:
-		int fullscreen = 0;
-		float sensitivity = 0.0f;
-		int drawDistance = -1;
-		int vsync = 0;
+		float fov;
+		int fullscreen;
+		float sensitivity;
+		int drawDistance;
+		int vsync = -1;
 		Initializer();
 	private:
 		void parseConfig(const std::string& configPath);

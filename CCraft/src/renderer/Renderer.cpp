@@ -4,7 +4,7 @@ namespace CCraft
 {
 	Renderer::Renderer()
 		: logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
-		input(window, parser.buttons, gameState), menu(parser.buttons), game(initializer.drawDistance)
+		input(window, parser.buttons, gameState), menu(parser.buttons), game(initializer.drawDistance, initializer.fov)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
 	}

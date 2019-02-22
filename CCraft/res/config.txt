@@ -2,6 +2,8 @@ width:
 1280
 height: 
 720
+field of view:
+75
 full screen:
 0
 mouse sensitivity:

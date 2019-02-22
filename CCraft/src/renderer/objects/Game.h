@@ -19,8 +19,9 @@ namespace CCraft
 		VertexArray block;
 		VertexBuffer block_buffer;
 		IndexBuffer block_indices;
+		float fov;
 	public:
-		Game(int drawDistance);
+		Game(int drawDistance, float fov);
 		void draw();
 	};
 }
