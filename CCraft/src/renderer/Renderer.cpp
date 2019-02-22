@@ -43,14 +43,6 @@ namespace CCraft
 					logger.log("Settings menu has not yet been implemented.", Logger::level::INFO);
 			}
 		}
-		if (input.escPressed)
-		{
-			input.firstMouse = true;
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-			gameState = GameState::MENU;
-			input.escPressed = false;
-			input.gameState = GameState::MENU;
-		}
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

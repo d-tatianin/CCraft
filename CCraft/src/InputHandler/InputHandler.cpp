@@ -44,31 +44,47 @@ namespace CCraft
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			escPressed = true;
-		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		if ((glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) && escQ)
+		{
+			if (gameState == GameState::GAME)
+			{
+				firstMouse = true;
+				glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+				gameState = GameState::MENU;
+			}
+			else if (gameState == GameState::MENU)
+			{
+				glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+				gameState = GameState::GAME;
+			}
+			escQ = false;
+		}
+		else if ((glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_RELEASE))
+		{
+			escQ = true;
+		}
+
+		if ((glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) && (gameState == GameState::GAME))
 		{
 			camera.ProcessKeyboard(Camera_Movement::FORWARD, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
 			
-		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		if ((glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) && (gameState == GameState::GAME))
 		{
 			camera.ProcessKeyboard(Camera_Movement::BACKWARD, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		if ((glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) && (gameState == GameState::GAME))
 		{
 			camera.ProcessKeyboard(Camera_Movement::LEFT, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		if ((glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) && (gameState == GameState::GAME))
 		{
 			camera.ProcessKeyboard(Camera_Movement::RIGHT, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
-		if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
-			logger.log("V press detected", Logger::level::INFO);
 	}
 
 	void InputHandler::checkButtons()

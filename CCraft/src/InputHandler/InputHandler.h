@@ -17,6 +17,7 @@ namespace CCraft
 	class InputHandler
 	{
 	private:
+		bool escQ = true;
 		Logger logger;
 		GLFWwindow* window;
 		std::vector<Button> &buttons;
