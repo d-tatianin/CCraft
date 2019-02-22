@@ -1,12 +1,10 @@
 #include "renderer/Renderer.h"
 
-
 int width = -1;
 int height = -1;
 
 CCraft::Renderer game;
 
-//Has to be initialized here because multiple classes require access to the shader.
 CCraft::Shader gameShader("res/shaders/game.shader");
 CCraft::Shader menuShader("res/shaders/menu.shader");
 
@@ -24,6 +22,5 @@ int main()
 		game.render();
 	}
 
-	//std::cin.get();
 	return 0;
 }

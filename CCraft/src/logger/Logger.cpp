@@ -26,23 +26,16 @@ namespace CCraft
 		filter = lvl;
 	}
 
-	const char* Logger::filterToString(level lvl)
+	const char* Logger::filterToString(level& lvl)
 	{
 		if (lvl == level::INFO)
-		{
-			const char* string = "INFO";
-			return string;
-		}
+			return "INFO";
 		else if (lvl == level::WARN)
-		{
-			const char* string = "WARNING";
-			return string;
-		}
+			return "WARNING";
 		else if (lvl == level::FATAL)
-		{
-			const char* string = "FATAL";
-			return string;
-		}
+			return "FATAL";
+		else
+			return "UNKNOWN";
 	}
 }
 

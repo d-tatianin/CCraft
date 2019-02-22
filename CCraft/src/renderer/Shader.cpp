@@ -132,7 +132,7 @@ namespace CCraft
 		if (location == -1)
 		{
 			std::stringstream ss;
-			ss << "Warning: uniform ' " << name << "'does not exist!'";
+			ss << "Uniform '" << name << "' does not exist!'";
 			std::string message = ss.str();
 			logger.log(message.c_str(), Logger::level::WARN);
 		}

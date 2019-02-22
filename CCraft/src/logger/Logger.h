@@ -19,7 +19,7 @@ namespace CCraft
 		void log(const char* message, level lvl);
 		void setFilter(level lvl);
 	private:
-		const char* filterToString(level lvl);
+		const char* filterToString(level& lvl);
 	};
 
 }

@@ -14,7 +14,6 @@ namespace CCraft
 	{
 		glfwTerminate();
 		logger.log("Successfully terminated.", Logger::level::INFO);
-		logger.log("Press enter to continue...", Logger::level::INFO);
 		running = false;
 	}
 

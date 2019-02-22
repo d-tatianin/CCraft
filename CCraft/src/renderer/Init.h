@@ -14,8 +14,8 @@ namespace CCraft
 	private:
 		Logger logger;
 		GLFWwindow* window;
-		int fullscreen = 0;
 	public:
+		int fullscreen = 0;
 		float sensitivity = 0.0f;
 		int drawDistance = -1;
 		int vsync = 0;
@@ -24,7 +24,6 @@ namespace CCraft
 		void parseConfig(const std::string& configPath);
 		void initWindow();
 		void initOpenGL();
-		void launch();
 		friend class Renderer;
 	};
 }

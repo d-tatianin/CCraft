@@ -8,7 +8,9 @@ namespace CCraft
 	Initializer::Initializer()
 		: logger("INITIALIZER", Logger::level::INFO)
 	{
-		launch();
+		parseConfig("res/config.txt");
+		initWindow();
+		initOpenGL();
 	}
 
 	void Initializer::parseConfig(const std::string& configPath)
@@ -106,12 +108,5 @@ namespace CCraft
 		}
 		else
 			logger.log("OpenGL successfully initialized.", Logger::level::INFO);
-	}
-
-	void Initializer::launch()
-	{
-		parseConfig("res/config.txt");
-		initWindow();
-		initOpenGL();
 	}
 }
