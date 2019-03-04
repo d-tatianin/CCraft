@@ -36,7 +36,7 @@ namespace CCraft
 		template<typename T>
 		void Push(unsigned int cout)
 		{
-			static_assert(false);
+			static_assert(false, "This type is unsupported by VertexBufferLayout.");
 		}
 
 		template<>
