@@ -1257,4 +1257,18 @@
     <None Include="res\shaders\game.shader" />
     <None Include="src\logger\LICENSE" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\button1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\button2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\button3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
