@@ -2,13 +2,17 @@
 
 #version 330 core
 layout(location = 0) in vec3 aPos;
-layout(location = 1) in mat4 model;
+layout(location = 1) in vec2 inTexCoords;
+layout(location = 2) in mat4 model;
+
+out vec2 texCoords;
 
 uniform mat4 view;
 uniform mat4 projection;
 
 void main()
 {
+	texCoords = inTexCoords;
 	gl_Position = projection * view * model * vec4(aPos, 1.0f);
 }
 
@@ -16,10 +20,12 @@ void main()
 
 #version 330 core
 
-uniform vec3 color;
+in vec2 texCoords;
 out vec4 outColor;
+
+uniform sampler2D ourTex;
 
 void main()
 {
-	outColor = vec4(color, 1.0f);
+	outColor = texture(ourTex, texCoords);
 }

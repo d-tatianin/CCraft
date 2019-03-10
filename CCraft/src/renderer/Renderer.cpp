@@ -7,6 +7,7 @@ namespace CCraft
 		input(window, parser.buttons, gameState), menu(parser.buttons), game(initializer.drawDistance, initializer.fov)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
+		glEnable(GL_DEPTH_TEST);
 	}
 
 
