@@ -93,9 +93,9 @@ namespace CCraft
 
 	void ChunkController::updateCoordinates()
 	{
-		for (Chunk chnk : chunks)
+		for (Chunk& chnk : chunks)
 		{
-			for (Layer lyr : chnk.layers)
+			for (Layer& lyr : chnk.layers)
 			{
 				for (Block& blk : lyr.blocks)
 				{

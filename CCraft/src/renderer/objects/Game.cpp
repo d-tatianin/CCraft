@@ -59,9 +59,9 @@ unsigned int cube_elements[] = {
 
 namespace CCraft {
 
-	Game::Game(int drawDistance, float fov)
+	Game::Game(int drawDistance, float fov, float chThickness)
 		: chunks(drawDistance), lookAt(1.0f), projection(1.0f), block_buffer(cube_vertices, sizeof(cube_vertices)),
-		block_indices(cube_elements, sizeof(cube_elements)), fov(fov)
+		block_indices(cube_elements, sizeof(cube_elements)), fov(fov), hud(chThickness)
 	{
 		projection = glm::perspective(glm::radians(fov), (float)width / (float)height, 0.1f, 100.0f);
 		VertexBufferLayout block_layout;
@@ -82,6 +82,7 @@ namespace CCraft {
 		block.Bind();
 		block_indices.Bind();
 		chunks.draw();
+		hud.draw();
 	}
 
 }

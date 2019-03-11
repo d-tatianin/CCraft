@@ -431,6 +431,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\game.shader" />
+    <None Include="res\shaders\crosshair.shader" />
     <None Include="res\shaders\menu.shader" />
     <None Include="src\logger\LICENSE" />
     <None Include="src\vendor\glm\detail\func_common.inl" />

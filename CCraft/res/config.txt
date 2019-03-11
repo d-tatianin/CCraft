@@ -12,3 +12,5 @@ draw distance:
 0
 lock fps:
 0
+crosshair thickness:
+0.3

@@ -7,6 +7,8 @@
 #include "../../vendor/glm/glm.hpp"
 #include "../../vendor/glm/gtc/matrix_transform.hpp"
 #include "../../GameModules/ChunkController.h"
+#include "Hud.h"
+
 namespace CCraft
 {
 	class Game
@@ -19,9 +21,10 @@ namespace CCraft
 		VertexArray block;
 		VertexBuffer block_buffer;
 		IndexBuffer block_indices;
+		Hud hud;
 		float fov;
 	public:
-		Game(int drawDistance, float fov);
+		Game(int drawDistance, float fov, float chThickness);
 		void draw();
 	};
 }

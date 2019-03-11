@@ -20,6 +20,7 @@ namespace CCraft
 		float sensitivity;
 		int drawDistance;
 		int vsync = -1;
+		float chThickness;
 		Initializer();
 	private:
 		void parseConfig(const std::string& configPath);

@@ -1256,6 +1256,7 @@
     <None Include="res\shaders\menu.shader" />
     <None Include="res\shaders\game.shader" />
     <None Include="src\logger\LICENSE" />
+    <None Include="res\shaders\crosshair.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\button1.png">
