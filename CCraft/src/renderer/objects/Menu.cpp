@@ -5,14 +5,6 @@ extern CCraft::Shader menuShader;
 namespace CCraft
 {
 
-	/* 
-	TODO:
-	- Button initialization happens entirely in the Button class.
-	- Button has a .draw() method.
-	- Button has a Texture class object, which has a .bind() method.
-	- Buttons vector is created in the Renderer class and its reference is shared among Menu and InputHandler classes.
-	*/
-
 	Menu::Menu(std::vector<Button>& buttons)
 		:buttons(buttons)
 	{

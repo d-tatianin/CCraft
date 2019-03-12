@@ -50,6 +50,7 @@ namespace CCraft
 						blocks.emplace_back(translation, id);
 						x++;
 					}
+					x -= 8;
 					z++;
 				}
 			}
@@ -64,6 +65,7 @@ namespace CCraft
 						blocks.emplace_back(translation, id);
 						x--;
 					}
+					x += 8;
 					z++;
 				}
 			}
@@ -78,6 +80,7 @@ namespace CCraft
 						blocks.emplace_back(translation, id);
 						x++;
 					}
+					x -= 8;
 					z++;
 				}
 			}
