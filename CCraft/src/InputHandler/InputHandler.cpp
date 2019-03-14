@@ -85,6 +85,16 @@ namespace CCraft
 			camera.ProcessKeyboard(Camera_Movement::RIGHT, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
+		if ((glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) && (gameState == GameState::GAME))
+		{
+			camera.ProcessKeyboard(Camera_Movement::UP, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
+		if ((glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) && (gameState == GameState::GAME))
+		{
+			camera.ProcessKeyboard(Camera_Movement::DOWN, deltaTime);
+			lookAt = camera.GetViewMatrix();
+		}
 	}
 
 	void InputHandler::checkButtons()

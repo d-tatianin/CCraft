@@ -12,6 +12,8 @@ namespace CCraft
 		BACKWARD,
 		LEFT,
 		RIGHT,
+		UP,
+		DOWN
 	};
 	
 	//default values 
@@ -52,27 +54,55 @@ namespace CCraft
 
 		void ProcessKeyboard(Camera_Movement direction, float deltaTime)
 		{
+
 			float velocity = MovementSpeed * deltaTime;
+			glm::vec3 tempo = glm::vec3(1.0f);
+			glm::vec3 normalizedTempo = glm::vec3(1.0f);
+
 			if (direction == FORWARD)
 			{
-				Position += Front * velocity;
+				tempo = Front;
+				tempo.y = 0.0f;
+				normalizedTempo = glm::normalize(tempo);
+				
+				Position += normalizedTempo * velocity;
 			}
 
 			if (direction == BACKWARD)
 			{
-				Position -= Front * velocity;
+				tempo = Front;
+				tempo.y = 0.0f;
+				normalizedTempo = glm::normalize(tempo);
+
+				Position -= normalizedTempo * velocity;
 			}
 
 			if (direction == LEFT)
 			{
-				Position -= Right * velocity;
+				tempo = Right;
+				tempo.y = 0.0f;
+				normalizedTempo = glm::normalize(tempo);
+
+				Position -= tempo * velocity;
 			}
 
 			if (direction == RIGHT)
 			{
+				tempo = Right;
+				tempo.y = 0.0f;
+				normalizedTempo = glm::normalize(tempo);
 				Position += Right * velocity;
 			}
 
+			if (direction == UP)
+			{
+				Position.y += velocity;
+			}
+
+			if (direction == DOWN)
+			{
+				Position.y -= velocity;
+			}
 		}
 
 		void ProcessMouseMovement(float xoffset, float yoffset)
