@@ -3,9 +3,9 @@
 namespace CCraft
 {
 
-	InputHandler::InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState)
+	InputHandler::InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState, int vsync)
 		: logger("INPUT", Logger::level::INFO), window(window), buttons(buttons),
-		gameState(gameState), lookAt(1.0f)
+		gameState(gameState), lookAt(1.0f), vsync(vsync)
 	{
 		lookAt = camera.GetViewMatrix();
 	}
@@ -51,11 +51,13 @@ namespace CCraft
 				firstMouse = true;
 				glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 				gameState = GameState::MENU;
+				glfwSwapInterval(1);
 			}
 			else if (gameState == GameState::MENU)
 			{
 				glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 				gameState = GameState::GAME;
+				glfwSwapInterval(vsync);
 			}
 			escQ = false;
 		}

@@ -104,7 +104,7 @@ namespace CCraft
 		else
 		{
 			glfwMakeContextCurrent(window);
-			glfwSwapInterval(vsync);
+			glfwSwapInterval(1);
 			logger.log("Window successfully initialized.", Logger::level::INFO);
 		}
 

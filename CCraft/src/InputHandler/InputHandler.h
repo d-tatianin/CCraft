@@ -17,6 +17,7 @@ namespace CCraft
 	class InputHandler
 	{
 	private:
+		int vsync;
 		bool escQ = true;
 		Logger logger;
 		GLFWwindow* window;
@@ -37,6 +38,6 @@ namespace CCraft
 		void checkButtons();
 		void deltaCalculate();
 	public:
-		InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState);
+		InputHandler(GLFWwindow* window, std::vector<Button> &buttons, GameState &gameState, int vsync);
 	};
 }

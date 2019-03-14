@@ -4,7 +4,7 @@ namespace CCraft
 {
 	Renderer::Renderer()
 		: logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
-		input(window, parser.buttons, gameState), menu(parser.buttons), game(initializer.drawDistance, initializer.fov, initializer.chThickness)
+		input(window, parser.buttons, gameState, initializer.vsync), menu(parser.buttons), game(initializer.drawDistance, initializer.fov, initializer.chThickness)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
 		glEnable(GL_DEPTH_TEST);
@@ -30,6 +30,7 @@ namespace CCraft
 				{
 					glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 					gameState = GameState::GAME;
+					glfwSwapInterval(initializer.vsync);
 				}
 					
 			}
