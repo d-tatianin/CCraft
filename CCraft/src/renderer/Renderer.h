@@ -9,6 +9,7 @@
 #include "objects/Button.h"
 #include "objects/Game.h"
 #include "ButtonParser/ButtonParser.h"
+#include <thread>
 
 namespace CCraft
 {
@@ -18,6 +19,8 @@ namespace CCraft
 	public:
 		bool running = true;
 	private:
+		unsigned int frames;
+		std::thread fpsCounter;
 		Initializer initializer;
 		Logger logger;
 		GLFWwindow* window;
@@ -32,6 +35,7 @@ namespace CCraft
 		Renderer();
 		void render();
 	private:
+		void countFrames();
 		void shutDown();
 
 	};

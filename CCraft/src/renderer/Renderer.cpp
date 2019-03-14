@@ -3,7 +3,7 @@
 namespace CCraft
 {
 	Renderer::Renderer()
-		: logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
+		: frames(0),fpsCounter(&Renderer::countFrames, this), logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
 		input(window, parser.buttons, gameState, initializer.vsync), menu(parser.buttons), game(initializer.drawDistance, initializer.fov, initializer.chThickness)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
@@ -13,9 +13,10 @@ namespace CCraft
 
 	void Renderer::shutDown()
 	{
+		running = false;
+		fpsCounter.detach();
 		glfwTerminate();
 		logger.log("Successfully terminated.", Logger::level::INFO);
-		running = false;
 	}
 
 	void Renderer::render()
@@ -67,10 +68,24 @@ namespace CCraft
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+		++frames;
 	}
 
 	GLFWwindow* Renderer::getWindowID()
 	{
 		return window;
+	}
+
+	void Renderer::countFrames()
+	{
+		while (running)
+		{
+			Sleep(1000);
+
+			if(frames) 
+				std::cout << "FPS: " << frames << "\n";
+
+			frames = 0;
+		}
 	}
 }
