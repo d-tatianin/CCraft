@@ -27,11 +27,13 @@ namespace CCraft
 
 	void Hud::draw()
 	{
+		glDisable(GL_DEPTH_TEST);
 		crosshairShader.Bind();
 		crosshairShader.SetUniformMat4f("projection", projection);
 		crosshairShader.SetUniformMat4f("scale", scale);
 		crosshairShader.setVec3("color", color);
 		crosshair.Bind();
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 6); 
+		glEnable(GL_DEPTH_TEST);
 	}
 }
