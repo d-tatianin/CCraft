@@ -74,7 +74,7 @@ namespace CCraft
 
 				ss.str("");
 
-				ss << "X " << (int)input.camera.Position.x << " Y " << (int)input.camera.Position.y << " Z " << (int)input.camera.Position.z;
+				ss << "X " << std::setprecision(3) << input.camera.Position.x << " Y " << input.camera.Position.y << " Z " << input.camera.Position.z;
 				text.renderText(ss.str(), (float)width * 0.01f, (float)height - (float)height * 0.1f, 0.5f, FontRenderer::Color::RED);
 			}
 		}

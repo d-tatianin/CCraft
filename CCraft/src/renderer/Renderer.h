@@ -11,6 +11,7 @@
 #include "ButtonParser/ButtonParser.h"
 #include "FontRenderer.h"
 #include <thread>
+#include <iomanip>
 
 namespace CCraft
 {
