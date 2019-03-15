@@ -19,6 +19,7 @@ namespace CCraft
 	private:
 		int vsync;
 		bool escQ = true;
+		bool f1Q = true;
 		Logger logger;
 		GLFWwindow* window;
 		std::vector<Button> &buttons;
@@ -32,6 +33,7 @@ namespace CCraft
 		float xoffset, yoffset, lastX, lastY;
 		bool firstMouse = true;
 		bool escPressed = false;
+		bool debugView = false;
 		double xCoord, yCoord;
 		void proccess();
 		void mouse_callback(double x, double y);

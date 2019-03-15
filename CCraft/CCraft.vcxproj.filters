@@ -69,6 +69,9 @@
     <ClCompile Include="src\renderer\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\FontRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -858,6 +861,9 @@
     <ClInclude Include="src\renderer\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\FontRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1257,6 +1263,8 @@
     <None Include="res\shaders\game.shader" />
     <None Include="src\logger\LICENSE" />
     <None Include="res\shaders\crosshair.shader" />
+    <None Include="res\shaders\font.shader" />
+    <None Include="freetype.dll" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\button1.png">
@@ -1269,6 +1277,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\dirt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\stone.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

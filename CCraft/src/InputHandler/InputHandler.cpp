@@ -66,6 +66,17 @@ namespace CCraft
 			escQ = true;
 		}
 
+		if ((glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS) && f1Q)
+		{
+			debugView ? debugView = false : debugView = true;
+
+			f1Q = false;
+		}
+		else if ((glfwGetKey(window, GLFW_KEY_F1) == GLFW_RELEASE))
+		{
+			f1Q = true;
+		}
+
 		if ((glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) && (gameState == GameState::GAME))
 		{
 			camera.ProcessKeyboard(Camera_Movement::FORWARD, deltaTime);

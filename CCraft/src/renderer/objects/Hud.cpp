@@ -13,9 +13,10 @@ namespace CCraft
 		630.0f, 370.0f, -1.0f
 	};
 
-	Hud::Hud(float chThickness)
+	Hud::Hud(float chThickness, FontRenderer& object)
 		: projection(1.0f), crosshairBuffer(crosshairVertices, sizeof(crosshairVertices)),
-		crosshairShader("res/shaders/crosshair.shader"), color(1.0f, 0.0f, 0.0f), scale(1.0f)
+		crosshairShader("res/shaders/crosshair.shader"), color(1.0f, 0.0f, 0.0f), scale(1.0f),
+		text(object)
 	{
 		scale = glm::scale(scale, glm::vec3(chThickness, chThickness, chThickness));
 		VertexBufferLayout layout;

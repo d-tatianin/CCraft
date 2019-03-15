@@ -6,6 +6,7 @@
 #include "../Shader.h"
 #include "../../vendor/glm/glm.hpp"
 #include "../../vendor/glm/gtc/matrix_transform.hpp"
+#include "../FontRenderer.h"
 
 namespace CCraft
 {
@@ -17,10 +18,11 @@ namespace CCraft
 		VertexBuffer crosshairBuffer;
 		Shader crosshairShader;
 		glm::mat4 scale;
+		FontRenderer& text;
 	public:
 		glm::vec3 color;
 	public:
-		Hud(float chThickness);
+		Hud(float chThickness, FontRenderer& object);
 		void draw();
 	};
 }

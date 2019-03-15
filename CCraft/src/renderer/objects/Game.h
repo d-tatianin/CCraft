@@ -24,7 +24,7 @@ namespace CCraft
 		Hud hud;
 		float fov;
 	public:
-		Game(int drawDistance, float fov, float chThickness);
+		Game(int drawDistance, float fov, float chThickness, FontRenderer& object);
 		void draw();
 	};
 }
