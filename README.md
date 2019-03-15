@@ -10,3 +10,4 @@ Controls:
 2. Space to go up, Shift to go down.
 3. ESC to go back. 
 4. 1/2 to enable/disable wireframe mode.
+5. F1 to enable FPS counter/show player coordinates.
