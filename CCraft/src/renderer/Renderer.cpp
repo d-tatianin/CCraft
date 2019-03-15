@@ -91,8 +91,6 @@ namespace CCraft
 
 	void Renderer::countFrames()
 	{
-		
-
 		while (running)
 		{
 			Sleep(1000);

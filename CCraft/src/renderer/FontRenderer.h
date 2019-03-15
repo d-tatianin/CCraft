@@ -2,7 +2,7 @@
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
-#include <map>
+#include <unordered_map>
 #include <string>
 #include "../logger/Logger.h"
 #include "../vendor/glm/glm.hpp"
@@ -27,7 +27,7 @@ namespace CCraft
 		Logger logger;
 		FT_Library ft;
 		FT_Face face;
-		std::map<char, Character> characters;
+		std::unordered_map<char, Character> characters;
 
 		Shader fontShader;
 
