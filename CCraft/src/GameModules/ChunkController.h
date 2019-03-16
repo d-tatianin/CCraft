@@ -3,6 +3,7 @@
 #include "../logger/Logger.h"
 #include "../renderer/Texture.h"
 #include <algorithm>
+#include <math.h>
 namespace CCraft
 {
 	class ChunkController

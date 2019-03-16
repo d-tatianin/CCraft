@@ -292,13 +292,13 @@ namespace CCraft
 		float currentChunkX = playerCoordinates.x / 8.0f;
 		float currentChunkZ = playerCoordinates.z / 8.0f;
 
-		int intCurrentChunkX = currentChunkX;
-		int	intCurrentChunkZ = currentChunkZ;
+		currentChunkX = floor(currentChunkX);
+		currentChunkZ = ceil(currentChunkZ);
 
-		if (intCurrentChunkX != oldChunkX || intCurrentChunkZ != oldChunkZ)
+		if (currentChunkX != oldChunkX || currentChunkZ != oldChunkZ)
 		{
-			oldChunkX = intCurrentChunkX;
-			oldChunkZ = intCurrentChunkZ;
+			oldChunkX = currentChunkX;
+			oldChunkZ = currentChunkZ;
 			generateAdditionalChunks(oldChunkX, oldChunkZ);
 		}
 
