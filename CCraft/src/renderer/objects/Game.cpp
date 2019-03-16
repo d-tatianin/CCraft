@@ -5,47 +5,47 @@ extern int height;
 extern CCraft::Shader gameShader;
 
 float cube_vertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 0.0f,
+	1.0f, 0.0f, 0.0f,  1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+	1.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+	0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 0.0f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+	1.0f, 0.0f, 1.0f,  1.0f, 0.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 1.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f,  0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	0.0f, 1.0f, 1.0f,  1.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+	0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+	0.0f, 1.0f, 1.0f,  1.0f, 0.0f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+	1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 0.0f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
+	1.0f, 0.0f, 1.0f,  1.0f, 0.0f,
+	1.0f, 0.0f, 1.0f,  1.0f, 0.0f,
+	0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+	0.0f, 0.0f, 0.0f,  0.0f, 1.0f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+	1.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 0.0f,
+	1.0f, 1.0f, 1.0f,  1.0f, 0.0f,
+	0.0f, 1.0f, 1.0f,  0.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,  0.0f, 1.0f
 };
 
 unsigned int cube_elements[] = {
@@ -59,8 +59,8 @@ unsigned int cube_elements[] = {
 
 namespace CCraft {
 
-	Game::Game(int drawDistance, float fov, float chThickness, FontRenderer& object)
-		: chunks(drawDistance), lookAt(1.0f), projection(1.0f), block_buffer(cube_vertices, sizeof(cube_vertices)),
+	Game::Game(int drawDistance, float fov, float chThickness, FontRenderer& object, glm::vec3& playerCoordinates)
+		: chunks(drawDistance, playerCoordinates), lookAt(1.0f), projection(1.0f), block_buffer(cube_vertices, sizeof(cube_vertices)),
 		block_indices(cube_elements, sizeof(cube_elements)), fov(fov), hud(chThickness, object)
 	{
 		projection = glm::perspective(glm::radians(fov), (float)width / (float)height, 0.1f, 100.0f);
@@ -81,6 +81,7 @@ namespace CCraft {
 		gameShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
 		block.Bind();
 		block_indices.Bind();
+		chunks.updateActiveChunks();
 		chunks.draw();
 		hud.draw();
 	}

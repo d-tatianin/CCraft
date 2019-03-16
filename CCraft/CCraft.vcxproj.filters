@@ -72,6 +72,9 @@
     <ClCompile Include="src\renderer\FontRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameModules\Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\config.txt" />
@@ -849,9 +852,6 @@
     <ClInclude Include="src\GameModules\Block.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameModules\Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\renderer\IndexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -862,6 +862,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\FontRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameModules\Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

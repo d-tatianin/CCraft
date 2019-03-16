@@ -2,13 +2,166 @@
 
 namespace CCraft
 {
-	ChunkController::ChunkController(int drawDistance)
-		: drawDistance(drawDistance), grassBlocks(new glm::mat4[calculateSize(drawDistance)]),
+	ChunkController::ChunkController(int drawDistance, glm::vec3& playerCoordinates)
+		: drawDistance(drawDistance), playerCoordinates(playerCoordinates), grassBlocks(new glm::mat4[calculateSize(drawDistance)]),
 		dirtBlocks(new glm::mat4[calculateSize(drawDistance)]), stoneBlocks(new glm::mat4[calculateSize(drawDistance)]), logger("ChunkController"),
 		grassBlockTex("res/textures/grass.png"), dirtBlockTex("res/textures/dirt.png"), stoneBlockTex("res/textures/stone.png")
 	{
-		chunks.emplace_back(0.0f, 0.0f, Layer::Direction::FORWARD);
+		generateInitialChunks();
 		initBlockArray();
+		updateCoordinates();
+	}
+
+	void ChunkController::generateInitialChunks()
+	{
+		if (drawDistance == 0)
+		{
+			chunks.emplace_back(0.0f, 0.0f);
+			chunks[0].active = true;
+		}
+		else
+		{
+			chunks.emplace_back(0.0f, 0.0f);
+
+			for (float i = drawDistance; i > 0; i--)
+			{
+				chunks.emplace_back(0.0f - i, 0.0f);
+				for (float j = drawDistance; j > 0; j--)
+				{
+					chunks.emplace_back(0.0f - i, 0.0f + j);
+					chunks.emplace_back(0.0f - i, 0.0f - j);
+				}
+
+				chunks.emplace_back(0.0f + i, 0.0f);
+				for (float j = drawDistance; j > 0; j--)
+				{
+					chunks.emplace_back(0.0f + i, 0.0f + j);
+					chunks.emplace_back(0.0f + i, 0.0f - j);
+				}
+				chunks.emplace_back(0.0f, 0.0f - i);
+				chunks.emplace_back(0.0f, 0.0f + i);
+			}
+			for (int i = 0; i < chunks.size(); i++)
+			{
+				chunks[i].active = true;
+			}
+		}
+	}
+
+	void ChunkController::generateAdditionalChunks(float x, float z)
+	{
+		for (Chunk& chnk : chunks)
+			chnk.active = false;
+
+		grassIndex = 0;
+		dirtIndex = 0;
+		stoneIndex = 0;
+
+
+		if (drawDistance == 0)
+		{
+			auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x && c.chunkCoordinateZ == z) return true; else return false; });
+			if (itr == chunks.end())
+			{
+				chunks.emplace_back(x, z);
+				chunks[chunks.size() - 1].active = true;
+			}
+			else
+				itr->active = true;
+		}
+		else
+		{
+			auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x && c.chunkCoordinateZ == z) return true; else return false; });
+			if(itr == chunks.end())
+			{
+				chunks.emplace_back(x, z);
+				chunks[chunks.size() - 1].active = true;
+			}
+			else
+				itr->active = true;
+			
+
+			for (float i = drawDistance; i > 0; i--)
+			{
+				itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x - i && c.chunkCoordinateZ == z) return true; else return false; });
+				if (itr == chunks.end())
+				{
+					chunks.emplace_back(x - i, z);
+					chunks[chunks.size() - 1].active = true;
+				}
+				else
+					itr->active = true;
+
+				for (float j = drawDistance; j > 0; j--)
+				{
+					itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x - i && c.chunkCoordinateZ == z + j) return true; else return false; });
+					if (itr == chunks.end())
+					{
+						chunks.emplace_back(x - i, z + j);
+						chunks[chunks.size() - 1].active = true;
+					}
+					else
+						itr->active = true;
+
+					itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x - i && c.chunkCoordinateZ == z - j) return true; else return false; });
+					if (itr == chunks.end())
+					{
+						chunks.emplace_back(x - i, z - j);
+						chunks[chunks.size() - 1].active = true;
+					}
+					else
+						itr->active = true;
+				}
+
+				itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x + i && c.chunkCoordinateZ == z) return true; else return false; });
+				if (itr == chunks.end())
+				{
+					chunks.emplace_back(x + i, z);
+					chunks[chunks.size() - 1].active = true;
+				}
+				else
+					itr->active = true;
+
+				for (float j = drawDistance; j > 0; j--)
+				{
+					itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x + i && c.chunkCoordinateZ == z + j) return true; else return false; });
+					if (itr == chunks.end())
+					{
+						chunks.emplace_back(x + i, z + j);
+						chunks[chunks.size() - 1].active = true;
+					}
+					else
+						itr->active = true;
+
+					itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x + i && c.chunkCoordinateZ == z - j) return true; else return false; });
+					if (itr == chunks.end())
+					{
+						chunks.emplace_back(x + i, z - j);
+						chunks[chunks.size() - 1].active = true;
+					}
+					else
+						itr->active = true;
+				}
+
+				itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x && c.chunkCoordinateZ == z - i) return true; else return false; });
+				if (itr == chunks.end())
+				{
+					chunks.emplace_back(x, z - i);
+					chunks[chunks.size() - 1].active = true;
+				}
+				else
+					itr->active = true;
+
+				itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == x && c.chunkCoordinateZ == z + i) return true; else return false; });
+				if (itr == chunks.end())
+				{
+					chunks.emplace_back(x, z + i);
+					chunks[chunks.size() - 1].active = true;
+				}
+				else
+					itr->active = true;
+			}
+		}
 		updateCoordinates();
 	}
 
@@ -95,9 +248,9 @@ namespace CCraft
 	{
 		for (Chunk& chnk : chunks)
 		{
-			for (Layer& lyr : chnk.layers)
+			if (chnk.active)
 			{
-				for (Block& blk : lyr.blocks)
+				for (Block& blk : chnk.blocks)
 				{
 					if (blk.id == 1)
 					{
@@ -115,7 +268,8 @@ namespace CCraft
 						stoneIndex++;
 					}
 				}
-			}	
+			}
+			
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, grassInstanceBuffer);
 		glBufferData(GL_ARRAY_BUFFER, (grassIndex + 1) * sizeof(glm::mat4), grassBlocks, GL_DYNAMIC_DRAW);
@@ -128,6 +282,26 @@ namespace CCraft
 		glBindBuffer(GL_ARRAY_BUFFER, stoneInstanceBuffer);
 		glBufferData(GL_ARRAY_BUFFER, (stoneIndex + 1) * sizeof(glm::mat4), stoneBlocks, GL_DYNAMIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	void ChunkController::updateActiveChunks()
+	{
+		static float oldChunkX = 0.0f;
+		static float oldChunkZ = 0.0f;
+
+		float currentChunkX = playerCoordinates.x / 8.0f;
+		float currentChunkZ = playerCoordinates.z / 8.0f;
+
+		int intCurrentChunkX = currentChunkX;
+		int	intCurrentChunkZ = currentChunkZ;
+
+		if (intCurrentChunkX != oldChunkX || intCurrentChunkZ != oldChunkZ)
+		{
+			oldChunkX = intCurrentChunkX;
+			oldChunkZ = intCurrentChunkZ;
+			generateAdditionalChunks(oldChunkX, oldChunkZ);
+		}
+
 	}
 
 	ChunkController::~ChunkController()

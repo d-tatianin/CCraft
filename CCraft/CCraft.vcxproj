@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameModules\Collision.cpp" />
     <ClCompile Include="src\renderer\FontRenderer.cpp" />
     <ClCompile Include="src\renderer\ButtonParser\ButtonParser.cpp" />
     <ClCompile Include="src\renderer\IndexBuffer.cpp" />
@@ -168,6 +169,7 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameModules\Collision.h" />
     <ClInclude Include="src\renderer\FontRenderer.h" />
     <ClInclude Include="src\renderer\ButtonParser\ButtonParser.h" />
     <ClInclude Include="src\renderer\IndexBuffer.h" />
@@ -175,7 +177,6 @@
     <ClInclude Include="src\GameModules\Chunk.h" />
     <ClInclude Include="src\GameModules\ChunkController.h" />
     <ClInclude Include="src\GameModules\Camera.h" />
-    <ClInclude Include="src\GameModules\Layer.h" />
     <ClInclude Include="src\renderer\objects\Game.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
     <ClInclude Include="src\logger\Logger.h" />

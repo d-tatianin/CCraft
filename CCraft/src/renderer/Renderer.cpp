@@ -5,7 +5,7 @@ namespace CCraft
 	Renderer::Renderer()
 		: frames(0), logger("RENDERER", Logger::level::INFO), window(initializer.window), gameState(GameState::MENU),
 		input(window, parser.buttons, gameState, initializer.vsync), fpsCounter(&Renderer::countFrames, this), menu(parser.buttons),
-		game(initializer.drawDistance, initializer.fov, initializer.chThickness, text)
+		game(initializer.drawDistance, initializer.fov, initializer.chThickness, text, input.camera.Position)
 	{
 		input.camera.MouseSensitivity = initializer.sensitivity;
 		glEnable(GL_DEPTH_TEST);

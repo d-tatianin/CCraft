@@ -2,7 +2,7 @@
 #include "Chunk.h"
 #include "../logger/Logger.h"
 #include "../renderer/Texture.h"
-
+#include <algorithm>
 namespace CCraft
 {
 	class ChunkController
@@ -10,6 +10,7 @@ namespace CCraft
 	public:
 		std::vector<Chunk> chunks;
 		int drawDistance;
+		glm::vec3& playerCoordinates;
 	private:
 		glm::mat4* grassBlocks;
 		glm::mat4* dirtBlocks;
@@ -28,13 +29,16 @@ namespace CCraft
 		int dirtIndex = 0;
 		int stoneIndex = 0;
 	public:
-		ChunkController(int drawDistance);
+		ChunkController(int drawDistance, glm::vec3& playerCoordinates);
 		~ChunkController();
 		void draw();
 		void initBlockArray();
 		void updateCoordinates();
+		void updateActiveChunks();
 	private:
 		int calculateSize(int dd);
+		void generateInitialChunks();
+		void generateAdditionalChunks(float x, float z);
 	};
 
 }

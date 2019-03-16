@@ -9,7 +9,7 @@ full screen:
 mouse sensitivity:
 0.1
 draw distance:
-0
+3
 lock fps:
 0
 crosshair thickness:

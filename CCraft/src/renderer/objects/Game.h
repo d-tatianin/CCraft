@@ -24,7 +24,7 @@ namespace CCraft
 		Hud hud;
 		float fov;
 	public:
-		Game(int drawDistance, float fov, float chThickness, FontRenderer& object);
+		Game(int drawDistance, float fov, float chThickness, FontRenderer& object, glm::vec3& playerCoordinates);
 		void draw();
 	};
 }
