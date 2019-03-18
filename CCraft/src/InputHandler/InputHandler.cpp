@@ -108,6 +108,16 @@ namespace CCraft
 			camera.ProcessKeyboard(Camera_Movement::DOWN, deltaTime);
 			lookAt = camera.GetViewMatrix();
 		}
+
+		if ((glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) && m1Q)
+		{
+			m1Q = false;
+			block.placeBlock(camera.Position, camera.Front);
+		}
+		else if ((glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE))
+		{
+			m1Q = true;
+		}
 	}
 
 	void InputHandler::checkButtons()

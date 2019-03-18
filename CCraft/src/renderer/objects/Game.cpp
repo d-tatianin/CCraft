@@ -81,7 +81,7 @@ namespace CCraft {
 		gameShader.setVec3("color", glm::vec3(0.0f, 0.0f, 0.0f));
 		block.Bind();
 		block_indices.Bind();
-		//chunks.updateActiveChunks();
+		chunks.updateActiveChunks();
 		chunks.draw();
 		hud.draw();
 	}

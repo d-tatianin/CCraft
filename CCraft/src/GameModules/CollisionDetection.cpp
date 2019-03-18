@@ -170,4 +170,17 @@ namespace CCraft
 				return true;
 		}
 	}
+
+	void CollisionDetection::placeBlock(glm::vec3 startingPosition, glm::vec3 ray)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			startingPosition += ray * 1.0f;
+			std::cout << startingPosition.x << " "<< startingPosition.y << " " << startingPosition.z << "\n";
+		}
+	}
+	void CollisionDetection::removeBlock(glm::vec3 startingPosition, glm::vec3 ray, float velocity)
+	{
+
+	}
 }

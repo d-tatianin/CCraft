@@ -20,6 +20,9 @@ namespace CCraft
 		int vsync;
 		bool escQ = true;
 		bool f1Q = true;
+		bool m1Q = true;
+		bool m2Q = true;
+		CollisionDetection block;
 		Logger logger;
 		GLFWwindow* window;
 		std::vector<Button> &buttons;
