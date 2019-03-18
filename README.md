@@ -1,9 +1,9 @@
 # CCraft
 ## The game is currently in the pre-alpha stage and is work in progress.
 ### List of things to be implemented before the game goes into the alpha stage: 
-- Player collision system.
-- Block placement/removal system. 
-- Dynamic chunk generation.
+- Player collision detection system. 	:white_check_mark:
+- Block placement/removal system. 🚧
+- Dynamic chunk generation. 	:white_check_mark:
 
 Controls: 
 1. WASD for moving around.
