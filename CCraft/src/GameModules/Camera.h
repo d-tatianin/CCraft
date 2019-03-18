@@ -4,17 +4,10 @@
 #include "../vendor/glm/glm.hpp"
 #include "../vendor/glm/gtc/matrix_transform.hpp"
 #include "../vendor/glm/gtc/type_ptr.hpp"
+#include "CollisionDetection.h"
+
 namespace CCraft 
 {
-
-	enum Camera_Movement {
-		FORWARD,
-		BACKWARD,
-		LEFT,
-		RIGHT,
-		UP,
-		DOWN
-	};
 	
 	//default values 
 	const float YAW = -90.0f;
@@ -26,6 +19,7 @@ namespace CCraft
 	class Camera
 	{
 	public:
+		CollisionDetection collisionDetection;
 		glm::vec3 Position;
 		glm::vec3 Front;
 		glm::vec3 Up;
@@ -37,7 +31,7 @@ namespace CCraft
 		float MouseSensitivity;
 		float Zoom;
 
-		Camera(glm::vec3 position = glm::vec3(1.0f, 66.0f, -1.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) 
+		Camera(glm::vec3 position = glm::vec3(0.0f, 67.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) 
 			: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 		{
 			Position = position;
@@ -64,7 +58,7 @@ namespace CCraft
 				tempo = Front;
 				tempo.y = 0.0f;
 				normalizedTempo = glm::normalize(tempo);
-				
+				collisionDetection.testForCollision(Position, normalizedTempo, direction, velocity);
 				Position += normalizedTempo * velocity;
 			}
 
@@ -73,7 +67,7 @@ namespace CCraft
 				tempo = Front;
 				tempo.y = 0.0f;
 				normalizedTempo = glm::normalize(tempo);
-
+				collisionDetection.testForCollision(Position, normalizedTempo, direction, velocity);
 				Position -= normalizedTempo * velocity;
 			}
 
@@ -82,8 +76,8 @@ namespace CCraft
 				tempo = Right;
 				tempo.y = 0.0f;
 				normalizedTempo = glm::normalize(tempo);
-
-				Position -= tempo * velocity;
+				collisionDetection.testForCollision(Position, normalizedTempo, direction, velocity);
+				Position -= normalizedTempo * velocity;
 			}
 
 			if (direction == RIGHT)
@@ -91,17 +85,20 @@ namespace CCraft
 				tempo = Right;
 				tempo.y = 0.0f;
 				normalizedTempo = glm::normalize(tempo);
-				Position += Right * velocity;
+				collisionDetection.testForCollision(Position, normalizedTempo, direction, velocity);
+				Position += normalizedTempo * velocity;
 			}
 
 			if (direction == UP)
 			{
-				Position.y += velocity;
+				if(collisionDetection.testForVerticalCollision(Position, velocity, direction))
+					Position.y += velocity;
 			}
 
 			if (direction == DOWN)
 			{
-				Position.y -= velocity;
+				if(collisionDetection.testForVerticalCollision(Position, velocity, direction))
+					Position.y -= velocity;
 			}
 		}
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Block.h"
+#include "CollisionDetection.h"
 
 #define startingY 64.0f
 #define baseGrassLayer 63.0f
@@ -34,6 +35,7 @@ namespace CCraft
 			calculateStartingFinalX(startingX, finalX);
 
 			glm::mat4 translation;
+			glm::vec3 coordinates;
 			BlockID id;
 
 			for (int y = startingY; y > 0; y--) //y layers to be generated
@@ -49,8 +51,10 @@ namespace CCraft
 				{
 					for (float x = startingX; x < finalX; x++) //x rows per z row to be generated
 					{
-						translation = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+						coordinates = glm::vec3(x, y, z);
+						translation = glm::translate(glm::mat4(1.0f), coordinates);
 						blocks.emplace_back(translation, id);
+						CollisionDetection::addCollisionElement(coordinates);
 					}
 				}
 			}

@@ -72,7 +72,7 @@
     <ClCompile Include="src\renderer\FontRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameModules\Collision.cpp">
+    <ClCompile Include="src\GameModules\CollisionDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -864,7 +864,7 @@
     <ClInclude Include="src\renderer\FontRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameModules\Collision.h">
+    <ClInclude Include="src\GameModules\CollisionDetection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

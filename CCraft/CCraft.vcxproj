@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameModules\Collision.cpp" />
+    <ClCompile Include="src\GameModules\CollisionDetection.cpp" />
     <ClCompile Include="src\renderer\FontRenderer.cpp" />
     <ClCompile Include="src\renderer\ButtonParser\ButtonParser.cpp" />
     <ClCompile Include="src\renderer\IndexBuffer.cpp" />
@@ -169,7 +169,7 @@
     <Text Include="res\config.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameModules\Collision.h" />
+    <ClInclude Include="src\GameModules\CollisionDetection.h" />
     <ClInclude Include="src\renderer\FontRenderer.h" />
     <ClInclude Include="src\renderer\ButtonParser\ButtonParser.h" />
     <ClInclude Include="src\renderer\IndexBuffer.h" />
