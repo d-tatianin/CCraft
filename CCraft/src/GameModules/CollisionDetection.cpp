@@ -1,5 +1,5 @@
 #include "CollisionDetection.h"
-#define PlayerSize 0.2f
+#define PlayerSize 0.3f //controls collision detection range.
 namespace CCraft
 {
 	std::array<std::set<std::pair<float, float>>, WORLD_HEIGHT> CollisionDetection::collisionMap;
@@ -29,12 +29,12 @@ namespace CCraft
 			
 			if (directionVector.x < 0)
 			{
-				tempoPlayerPositionX.x -= 0.3f;
+				tempoPlayerPositionX.x -= PlayerSize;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 			else
 			{
-				tempoPlayerPositionX.x += 0.3f;
+				tempoPlayerPositionX.x += PlayerSize;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 			
@@ -50,16 +50,6 @@ namespace CCraft
 				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 				{
 					directionVector.x = 0.0f;
-				}
-				if (tempoPlayerPositionZ.z < 0.0f)
-				{
-					tempoPlayerPositionZ.z -= 0.7f;
-					blockZ = ceil(tempoPlayerPositionZ.z);
-				}
-				else
-				{
-					tempoPlayerPositionZ.z -= 0.3f;
-					blockZ = floor(tempoPlayerPositionZ.z);
 				}
 			}
 			else
@@ -84,12 +74,12 @@ namespace CCraft
 
 			if (directionVector.z < 0.0f)
 			{
-				tempoPlayerPositionZ.z -= 0.3f;
+				tempoPlayerPositionZ.z -= PlayerSize;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 			else
 			{
-				tempoPlayerPositionZ.z += 0.3f;
+				tempoPlayerPositionZ.z += PlayerSize;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 
@@ -137,12 +127,12 @@ namespace CCraft
 
 			if (directionVector.x > 0)
 			{
-				tempoPlayerPositionX.x -= 0.3f;
+				tempoPlayerPositionX.x -= PlayerSize;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 			else
 			{
-				tempoPlayerPositionX.x += 0.3f;
+				tempoPlayerPositionX.x += PlayerSize;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 
@@ -158,16 +148,6 @@ namespace CCraft
 				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 				{
 					directionVector.x = 0.0f;
-				}
-				if (tempoPlayerPositionZ.z < 0.0f)
-				{
-					tempoPlayerPositionZ.z -= 0.7f;
-					blockZ = ceil(tempoPlayerPositionZ.z);
-				}
-				else
-				{
-					tempoPlayerPositionZ.z -= 0.3f;
-					blockZ = floor(tempoPlayerPositionZ.z);
 				}
 			}
 			else
@@ -192,12 +172,12 @@ namespace CCraft
 
 			if (directionVector.z > 0.0f)
 			{
-				tempoPlayerPositionZ.z -= 0.3f;
+				tempoPlayerPositionZ.z -= PlayerSize;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 			else
 			{
-				tempoPlayerPositionZ.z += 0.3f;
+				tempoPlayerPositionZ.z += PlayerSize;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 
