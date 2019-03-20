@@ -26,46 +26,101 @@ namespace CCraft
 
 			glm::vec3 tempoPlayerPositionX = playerPosition;
 			glm::vec3 tempoPlayerPositionZ = playerPosition;
-
-			if (tempoPlayerPositionX.x < 0)
-			{
-				tempoPlayerPositionX.x -= 0.7f;
-				blockX = ceil(tempoPlayerPositionX.x);
-			}
-			else
+			
+			if (directionVector.x < 0)
 			{
 				tempoPlayerPositionX.x -= 0.3f;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
-			
-			
-			blockZ = floor(tempoPlayerPositionX.z);
-			blockY = floor(tempoPlayerPositionX.y);
-			
-			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+			else
 			{
+				tempoPlayerPositionX.x += 0.3f;
+				blockX = floor(tempoPlayerPositionX.x);
+			}
+			
+			if (tempoPlayerPositionX.y == round(tempoPlayerPositionX.y))
+			{
+				blockZ = floor(tempoPlayerPositionX.z);
+				blockY = tempoPlayerPositionX.y;
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (tempoPlayerPositionZ.z < 0.0f)
+				{
+					tempoPlayerPositionZ.z -= 0.7f;
+					blockZ = ceil(tempoPlayerPositionZ.z);
+				}
+				else
+				{
+					tempoPlayerPositionZ.z -= 0.3f;
+					blockZ = floor(tempoPlayerPositionZ.z);
+				}
+			}
+			else
+			{
+				blockZ = floor(tempoPlayerPositionX.z);
+				blockY = ceil(tempoPlayerPositionX.y);
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.x = 0.0f;
+				}
 				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
 				{
 					directionVector.x = 0.0f;
 				}
 			}
 
-			if (tempoPlayerPositionZ.z < 0.0f)
-			{
-				tempoPlayerPositionZ.z -= 0.7f;
-				blockZ = ceil(tempoPlayerPositionZ.z);
-			}
-			else
+
+			if (directionVector.z < 0.0f)
 			{
 				tempoPlayerPositionZ.z -= 0.3f;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
-
-			blockX = floor(tempoPlayerPositionZ.x);
-			blockY = floor(tempoPlayerPositionZ.y);
-
-			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+			else
 			{
+				tempoPlayerPositionZ.z += 0.3f;
+				blockZ = floor(tempoPlayerPositionZ.z);
+			}
+
+			if (tempoPlayerPositionZ.y == round(tempoPlayerPositionZ.y))
+			{
+
+				blockX = floor(tempoPlayerPositionZ.x);
+				blockY = tempoPlayerPositionZ.y;
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.z = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.z = 0.0f;
+				}
+			}
+			else
+			{
+				blockX = floor(tempoPlayerPositionZ.x);
+				blockY = ceil(tempoPlayerPositionZ.y);
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.z = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.z = 0.0f;
+				}
 				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
 				{
 					directionVector.z = 0.0f;
@@ -80,45 +135,100 @@ namespace CCraft
 			glm::vec3 tempoPlayerPositionX = playerPosition;
 			glm::vec3 tempoPlayerPositionZ = playerPosition;
 
-			if (tempoPlayerPositionX.x < 0)
-			{
-				tempoPlayerPositionX.x -= 0.7f;
-				blockX = ceil(tempoPlayerPositionX.x);
-			}
-			else
+			if (directionVector.x > 0)
 			{
 				tempoPlayerPositionX.x -= 0.3f;
 				blockX = floor(tempoPlayerPositionX.x);
 			}
-
-
-			blockZ = floor(tempoPlayerPositionX.z);
-			blockY = floor(tempoPlayerPositionX.y);
-
-			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+			else
 			{
+				tempoPlayerPositionX.x += 0.3f;
+				blockX = floor(tempoPlayerPositionX.x);
+			}
+
+			if (tempoPlayerPositionX.y == round(tempoPlayerPositionX.y))
+			{
+				blockZ = floor(tempoPlayerPositionX.z);
+				blockY = tempoPlayerPositionX.y;
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (tempoPlayerPositionZ.z < 0.0f)
+				{
+					tempoPlayerPositionZ.z -= 0.7f;
+					blockZ = ceil(tempoPlayerPositionZ.z);
+				}
+				else
+				{
+					tempoPlayerPositionZ.z -= 0.3f;
+					blockZ = floor(tempoPlayerPositionZ.z);
+				}
+			}
+			else
+			{
+				blockZ = floor(tempoPlayerPositionX.z);
+				blockY = ceil(tempoPlayerPositionX.y);
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.x = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.x = 0.0f;
+				}
 				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
 				{
 					directionVector.x = 0.0f;
 				}
 			}
 
-			if (tempoPlayerPositionZ.z < 0.0f)
-			{
-				tempoPlayerPositionZ.z -= 0.7f;
-				blockZ = ceil(tempoPlayerPositionZ.z);
-			}
-			else
+
+			if (directionVector.z > 0.0f)
 			{
 				tempoPlayerPositionZ.z -= 0.3f;
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
-
-			blockX = floor(tempoPlayerPositionZ.x);
-			blockY = floor(tempoPlayerPositionZ.y);
-
-			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+			else
 			{
+				tempoPlayerPositionZ.z += 0.3f;
+				blockZ = floor(tempoPlayerPositionZ.z);
+			}
+
+			if (tempoPlayerPositionZ.y == round(tempoPlayerPositionZ.y))
+			{
+
+				blockX = floor(tempoPlayerPositionZ.x);
+				blockY = tempoPlayerPositionZ.y;
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.z = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.z = 0.0f;
+				}
+			}
+			else
+			{
+				blockX = floor(tempoPlayerPositionZ.x);
+				blockY = ceil(tempoPlayerPositionZ.y);
+
+				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
+				{
+					directionVector.z = 0.0f;
+				}
+				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
+				{
+					directionVector.z = 0.0f;
+				}
 				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
 				{
 					directionVector.z = 0.0f;
