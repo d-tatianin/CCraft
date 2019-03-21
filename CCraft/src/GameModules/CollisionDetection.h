@@ -28,6 +28,6 @@ namespace CCraft
 		void testForCollision(glm::vec3 playerPosition, glm::vec3& directionVector, Camera_Movement direction, float velocity);
 		bool testForVerticalCollision(glm::vec3 playerPosition, float velocity, Camera_Movement direction);
 		void placeBlock(glm::vec3 startingPosition, glm::vec3 ray);
-		void removeBlock(glm::vec3 startingPosition, glm::vec3 ray, float velocity);
+		void removeBlock(glm::vec3 startingPosition, glm::vec3 ray);
 	};
 }

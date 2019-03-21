@@ -118,6 +118,15 @@ namespace CCraft
 		{
 			m1Q = true;
 		}
+		if ((glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) && m2Q)
+		{
+			m2Q = false;
+			block.removeBlock(camera.Position, camera.Front);
+		}
+		else if ((glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE))
+		{
+			m2Q = true;
+		}
 	}
 
 	void InputHandler::checkButtons()

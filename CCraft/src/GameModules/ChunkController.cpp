@@ -319,7 +319,14 @@ namespace CCraft
 	void ChunkController::removeBlock(glm::vec3& blockCoordinates)
 	{
 		float chunkX = floor(blockCoordinates.x / 8.0f);
-		float chunkZ = ceil(blockCoordinates.z / 8.0f);
+		float chunkZ = blockCoordinates.z / 8.0f;
+		if (chunkZ == round(chunkZ))
+			chunkZ += 1.0f;
+		else
+			chunkZ = ceil(chunkZ);
+		
+
+		std::cout << chunkZ << std::endl;
 		auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == chunkX && c.chunkCoordinateZ == chunkZ) return true; else return false; });
 		if (itr != chunks.end())
 		{
@@ -342,7 +349,3 @@ namespace CCraft
 		glDeleteBuffers(1, &stoneInstanceBuffer);
 	}
 }
-
-
-
-
