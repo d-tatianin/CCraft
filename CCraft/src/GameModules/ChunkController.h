@@ -9,7 +9,7 @@ namespace CCraft
 	class ChunkController
 	{
 	public:
-		std::vector<Chunk> chunks;
+		static std::vector<Chunk> chunks;
 		int drawDistance;
 		glm::vec3& playerCoordinates;
 	private:
@@ -29,6 +29,7 @@ namespace CCraft
 		int grassIndex = 0;
 		int dirtIndex = 0;
 		int stoneIndex = 0;
+		static bool blocksChanged;
 	public:
 		ChunkController(int drawDistance, glm::vec3& playerCoordinates);
 		~ChunkController();
@@ -36,6 +37,7 @@ namespace CCraft
 		void initBlockArray();
 		void updateCoordinates();
 		void updateActiveChunks();
+		static void removeBlock(glm::vec3& blockCoordinates);
 	private:
 		int calculateSize(int dd);
 		void generateInitialChunks();

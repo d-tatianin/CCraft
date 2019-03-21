@@ -1,4 +1,5 @@
 #include "CollisionDetection.h"
+#include "ChunkController.h"
 #define PlayerSize 0.3f //controls collision detection range.
 namespace CCraft
 {
@@ -116,6 +117,8 @@ namespace CCraft
 					directionVector.z = 0.0f;
 				}
 			}
+			std::cout << directionVector.x << "\n";
+			std::cout << directionVector.z;
 		}
 		
 		if (direction == BACKWARD || direction == LEFT)
@@ -263,10 +266,27 @@ namespace CCraft
 
 	void CollisionDetection::placeBlock(glm::vec3 startingPosition, glm::vec3 ray)
 	{
+		startingPosition.x = round(startingPosition.x);
+		startingPosition.z = round(startingPosition.z);
+		std::cout << startingPosition.x << " " << startingPosition.y << " " << startingPosition.z << "\n";
 		for (int i = 0; i < 3; i++)
 		{
 			startingPosition += ray * 1.0f;
-			std::cout << startingPosition.x << " "<< startingPosition.y << " " << startingPosition.z << "\n";
+			auto rayTarget = startingPosition;
+			rayTarget.x = round(rayTarget.x);
+			rayTarget.y = round(rayTarget.y);
+			rayTarget.z = round(rayTarget.z);
+			rayTarget.y -= 1.0f;
+			auto block = collisionMap[rayTarget.y].find(std::make_pair(rayTarget.x, rayTarget.z));
+			if (block != collisionMap[rayTarget.y].end())
+			{
+				std::cout << "FOUND A BLOCK AT: " << rayTarget.x << " " << rayTarget.y - 1 << " " << rayTarget.z << "\n";
+				ChunkController::removeBlock(rayTarget);
+				collisionMap[rayTarget.y].erase(block);
+				break;
+			}
+			else
+			std::cout << "DID NOT FIND A BLOCK AT: " << rayTarget.x << " " << rayTarget.y -1<< " " << rayTarget.z << "\n";
 		}
 	}
 	void CollisionDetection::removeBlock(glm::vec3 startingPosition, glm::vec3 ray, float velocity)

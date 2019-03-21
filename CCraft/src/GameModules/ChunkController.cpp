@@ -2,11 +2,15 @@
 
 namespace CCraft
 {
+	std::vector<Chunk> ChunkController::chunks;
+	bool ChunkController::blocksChanged;
+
 	ChunkController::ChunkController(int drawDistance, glm::vec3& playerCoordinates)
 		: drawDistance(drawDistance), playerCoordinates(playerCoordinates), grassBlocks(new glm::mat4[calculateSize(drawDistance)]),
 		dirtBlocks(new glm::mat4[calculateSize(drawDistance)]), stoneBlocks(new glm::mat4[calculateSize(drawDistance)]), logger("ChunkController"),
 		grassBlockTex("res/textures/grass.png"), dirtBlockTex("res/textures/dirt.png"), stoneBlockTex("res/textures/stone.png")
 	{
+		blocksChanged = false;
 		generateInitialChunks();
 		initBlockArray();
 		updateCoordinates();
@@ -269,7 +273,6 @@ namespace CCraft
 					}
 				}
 			}
-			
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, grassInstanceBuffer);
 		glBufferData(GL_ARRAY_BUFFER, (grassIndex + 1) * sizeof(glm::mat4), grassBlocks, GL_DYNAMIC_DRAW);
@@ -300,8 +303,32 @@ namespace CCraft
 			oldChunkX = currentChunkX;
 			oldChunkZ = currentChunkZ;
 			generateAdditionalChunks(oldChunkX, oldChunkZ);
+			blocksChanged = false;
 		}
+		else if (blocksChanged)
+		{
+			blocksChanged = false;
+			grassIndex = 0;
+			dirtIndex = 0;
+			stoneIndex = 0;
+			updateCoordinates();
+		}
+			
+	}
 
+	void ChunkController::removeBlock(glm::vec3& blockCoordinates)
+	{
+		float chunkX = floor(blockCoordinates.x / 8.0f);
+		float chunkZ = ceil(blockCoordinates.z / 8.0f);
+		auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == chunkX && c.chunkCoordinateZ == chunkZ) return true; else return false; });
+		if (itr != chunks.end())
+		{
+			glm::mat4 translation = glm::translate(glm::mat4(1.0f), blockCoordinates);
+			auto blockItr = std::find_if(itr->blocks.begin(), itr->blocks.end(), [&](Block& b) {if (b.coordinates == translation) return true; else return false; });
+			if (blockItr != itr->blocks.end())
+				itr->blocks.erase(blockItr);
+		}
+		blocksChanged = true;
 	}
 
 	ChunkController::~ChunkController()
