@@ -177,9 +177,9 @@ namespace CCraft
 	{
 		glm::vec3 basePos = startingPosition;
 
-		for (int i = 0; i < BlockPlacementRange; i++)
+		for (int i = 0; i < BlockPlacementRange * 10; i++)
 		{
-			startingPosition += ray * 1.0f;
+			startingPosition += ray * 0.1f;
 			auto rayTarget = startingPosition;
 			rayTarget.x = floor(rayTarget.x);
 			rayTarget.y = ceil(rayTarget.y);
@@ -313,9 +313,9 @@ namespace CCraft
 	}
 	void CollisionDetection::removeBlock(glm::vec3 startingPosition, glm::vec3 ray)
 	{
-		for (int i = 0; i < BlockPlacementRange; i++)
+		for (int i = 0; i < BlockPlacementRange * 10; i++)
 		{
-			startingPosition += ray * 1.0f;
+			startingPosition += ray * 0.1f;
 			auto rayTarget = startingPosition;
 			rayTarget.x = floor(rayTarget.x);
 			rayTarget.y = ceil(rayTarget.y);
