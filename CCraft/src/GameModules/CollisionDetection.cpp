@@ -15,7 +15,7 @@ namespace CCraft
 	{
 		collisionMap[(int)coords.y].erase(std::make_pair(coords.x, coords.z));
 	}
-	//should also test for the 4 blocks around the player: x+1 z-1, x-1 z-1, x+1 z+1, x-1 z+1.
+	
 	void CollisionDetection::testForCollision(glm::vec3 playerPosition, glm::vec3& directionVector, Camera_Movement direction, float velocity)
 	{
 		float blockX;
@@ -40,40 +40,18 @@ namespace CCraft
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 			
-			if (tempoPlayerPositionX.y == round(tempoPlayerPositionX.y))
+			blockZ = floor(tempoPlayerPositionX.z);
+			blockY = ceil(tempoPlayerPositionX.y);
+
+			if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
 			{
-				blockZ = floor(tempoPlayerPositionX.z);
-				blockY = tempoPlayerPositionX.y;
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.x = 0.0f;
-				}
+				directionVector.x = 0.0f;
 			}
-			else
+			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 			{
-				blockZ = floor(tempoPlayerPositionX.z);
-				blockY = ceil(tempoPlayerPositionX.y);
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
-				{
-					directionVector.x = 0.0f;
-				}
+				directionVector.x = 0.0f;
 			}
-
-
+			
 			if (directionVector.z < 0.0f)
 			{
 				tempoPlayerPositionZ.z -= PlayerSize;
@@ -85,38 +63,16 @@ namespace CCraft
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 
-			if (tempoPlayerPositionZ.y == round(tempoPlayerPositionZ.y))
+			blockX = floor(tempoPlayerPositionZ.x);
+			blockY = ceil(tempoPlayerPositionZ.y);
+
+			if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
 			{
-
-				blockX = floor(tempoPlayerPositionZ.x);
-				blockY = tempoPlayerPositionZ.y;
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.z = 0.0f;
-				}
+				directionVector.z = 0.0f;
 			}
-			else
+			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 			{
-				blockX = floor(tempoPlayerPositionZ.x);
-				blockY = ceil(tempoPlayerPositionZ.y);
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
-				{
-					directionVector.z = 0.0f;
-				}
+				directionVector.z = 0.0f;
 			}
 		}
 		
@@ -138,39 +94,17 @@ namespace CCraft
 				blockX = floor(tempoPlayerPositionX.x);
 			}
 
-			if (tempoPlayerPositionX.y == round(tempoPlayerPositionX.y))
+			blockZ = floor(tempoPlayerPositionX.z);
+			blockY = ceil(tempoPlayerPositionX.y);
+
+			if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
 			{
-				blockZ = floor(tempoPlayerPositionX.z);
-				blockY = tempoPlayerPositionX.y;
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.x = 0.0f;
-				}
+				directionVector.x = 0.0f;
 			}
-			else
+			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 			{
-				blockZ = floor(tempoPlayerPositionX.z);
-				blockY = ceil(tempoPlayerPositionX.y);
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.x = 0.0f;
-				}
-				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
-				{
-					directionVector.x = 0.0f;
-				}
+				directionVector.x = 0.0f;
 			}
-
 
 			if (directionVector.z > 0.0f)
 			{
@@ -183,38 +117,16 @@ namespace CCraft
 				blockZ = floor(tempoPlayerPositionZ.z);
 			}
 
-			if (tempoPlayerPositionZ.y == round(tempoPlayerPositionZ.y))
+			blockX = floor(tempoPlayerPositionZ.x);
+			blockY = ceil(tempoPlayerPositionZ.y);
+
+			if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
 			{
-
-				blockX = floor(tempoPlayerPositionZ.x);
-				blockY = tempoPlayerPositionZ.y;
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.z = 0.0f;
-				}
+				directionVector.z = 0.0f;
 			}
-			else
+			if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
 			{
-				blockX = floor(tempoPlayerPositionZ.x);
-				blockY = ceil(tempoPlayerPositionZ.y);
-
-				if (collisionMap[blockY - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 1].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 2].end())
-				{
-					directionVector.z = 0.0f;
-				}
-				if (collisionMap[blockY - 3].find(std::make_pair(blockX, blockZ)) != collisionMap[blockY - 3].end())
-				{
-					directionVector.z = 0.0f;
-				}
+				directionVector.z = 0.0f;
 			}
 		}
 	}
@@ -223,11 +135,11 @@ namespace CCraft
 	{
 		float blockX;
 		float blockZ;
-		//should check collision for the 4 blocks above, not just 1
+
 		if (direction == UP)
 		{
 			playerPosition.y += velocity;
-			playerPosition.y += PlayerSize;
+			playerPosition.y += PlayerSize - 0.1f;
 			playerPosition.y = ceil(playerPosition.y);
 			
 
@@ -241,23 +153,20 @@ namespace CCraft
 			else
 				return true;
 		}
-		//should check collision for the 4 blocks under, not just 1
+		
 		if (direction == DOWN)
 		{
 			playerPosition.y -= velocity;
-
+			playerPosition.y -= 1.0f - PlayerSize;
 			playerPosition.y = floor(playerPosition.y);
 
 			blockZ = floor(playerPosition.z);
 			blockX = floor(playerPosition.x);
 
-			if (collisionMap[(int)playerPosition.y - 2].find(std::make_pair(blockX, blockZ)) != collisionMap[(int)playerPosition.y - 2].end())
+			if (collisionMap[(int)playerPosition.y - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[(int)playerPosition.y - 1].end())
 			{
 				if (collisionMap[(int)playerPosition.y - 1].find(std::make_pair(blockX, blockZ)) != collisionMap[(int)playerPosition.y - 1].end())
-				{
 					return false;
-				}
-					
 			}
 			else
 				return true;
