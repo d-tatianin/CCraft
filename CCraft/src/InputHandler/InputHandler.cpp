@@ -1,5 +1,4 @@
 #include "InputHandler.h"
-
 namespace CCraft
 {
 
@@ -43,6 +42,11 @@ namespace CCraft
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		if ((glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS))
+		{
+			system("cls");
+		}
 
 		if ((glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) && escQ)
 		{

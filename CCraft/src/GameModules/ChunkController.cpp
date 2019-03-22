@@ -324,9 +324,7 @@ namespace CCraft
 			chunkZ += 1.0f;
 		else
 			chunkZ = ceil(chunkZ);
-		
 
-		std::cout << chunkZ << std::endl;
 		auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == chunkX && c.chunkCoordinateZ == chunkZ) return true; else return false; });
 		if (itr != chunks.end())
 		{
@@ -334,6 +332,26 @@ namespace CCraft
 			auto blockItr = std::find_if(itr->blocks.begin(), itr->blocks.end(), [&](Block& b) {if (b.coordinates == translation) return true; else return false; });
 			if (blockItr != itr->blocks.end())
 				itr->blocks.erase(blockItr);
+		}
+		blocksChanged = true;
+	}
+
+	void ChunkController::placeBlock(glm::vec3& blockCoordinates)
+	{
+		float chunkX = floor(blockCoordinates.x / 8.0f);
+		float chunkZ = blockCoordinates.z / 8.0f;
+		if (chunkZ == round(chunkZ))
+			chunkZ += 1.0f;
+		else
+			chunkZ = ceil(chunkZ);
+
+		auto itr = std::find_if(chunks.begin(), chunks.end(), [&](Chunk& c) {if (c.chunkCoordinateX == chunkX && c.chunkCoordinateZ == chunkZ) return true; else return false; });
+		if (itr != chunks.end())
+		{
+			glm::mat4 translation = glm::translate(glm::mat4(1.0f), blockCoordinates);
+			auto foundBlock = std::find_if(itr->blocks.begin(), itr->blocks.end(), [&](Block& b) {if (b.coordinates == translation) return true; else return false; });
+			if (foundBlock == itr->blocks.end())
+				itr->blocks.emplace_back(translation, 2);	
 		}
 		blocksChanged = true;
 	}

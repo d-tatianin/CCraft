@@ -38,6 +38,7 @@ namespace CCraft
 		void updateCoordinates();
 		void updateActiveChunks();
 		static void removeBlock(glm::vec3& blockCoordinates);
+		static void placeBlock(glm::vec3& blockCoordinates);
 	private:
 		int calculateSize(int dd);
 		void generateInitialChunks();

@@ -1,6 +1,7 @@
 #include "CollisionDetection.h"
 #include "ChunkController.h"
 #define PlayerSize 0.3f //controls collision detection range.
+#define BlockPlacementRange 5
 namespace CCraft
 {
 	std::array<std::set<std::pair<float, float>>, WORLD_HEIGHT> CollisionDetection::collisionMap;
@@ -265,14 +266,9 @@ namespace CCraft
 
 	void CollisionDetection::placeBlock(glm::vec3 startingPosition, glm::vec3 ray)
 	{
-		
-	}
-	void CollisionDetection::removeBlock(glm::vec3 startingPosition, glm::vec3 ray)
-	{
-		//startingPosition.x = ceil(startingPosition.x);
-		//startingPosition.z = floor(startingPosition.z);
-		//std::cout << startingPosition.x << " " << startingPosition.y << " " << startingPosition.z << "\n";
-		for (int i = 0; i < 8; i++)
+		glm::vec3 basePos = startingPosition;
+
+		for (int i = 0; i < BlockPlacementRange; i++)
 		{
 			startingPosition += ray * 1.0f;
 			auto rayTarget = startingPosition;
@@ -280,6 +276,143 @@ namespace CCraft
 			rayTarget.y = ceil(rayTarget.y);
 			rayTarget.z = floor(rayTarget.z);
 			rayTarget.y -= 1.0f;
+			auto targetedBlock = collisionMap[rayTarget.y].find(std::make_pair(rayTarget.x, rayTarget.z));
+			if (targetedBlock != collisionMap[rayTarget.y].end())
+			{
+				//float hint = glm::degrees(acos(glm::dot(glm::normalize(basePos), glm::normalize(startingPosition))));
+				//std::cout << hint << "\n";
+				glm::vec3 offset = startingPosition - basePos;
+				float offsetByX = offset.x;
+				float offsetByY = offset.y;
+				float offsetByZ = offset.z;
+
+				if (offsetByX < 0.0f)
+					offsetByX *= -1.0f;
+				if (offsetByZ < 0.0f)
+					offsetByZ *= -1.0f;
+				if (offsetByY < 0.0f)
+					offsetByY *= -1.0f;
+
+				if (offsetByX > offsetByZ)
+				{
+					if (offset.x > 0.0f) //looking towards positive x.
+					{
+						if (offset.y > PlayerSize) //looking at the bottom of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y - 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y - 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+
+						}
+						else if (offset.y > -1.0f && offset.y < 1.0f) //looking at the middle of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x - 1.0f, rayTarget.y, rayTarget.z);
+							collisionMap[rayTarget.y].insert(std::make_pair(rayTarget.x - 1.0f, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y < PlayerSize) //looking at the top of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y + 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y + 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+
+					}
+					if (offset.x < 0.0f) //looking towards negative x.
+					{
+						if (offset.y > PlayerSize) //looking at the bottom of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y - 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y - 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y > -1.0f && offset.y < 1.0f) //looking at the middle of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x + 1.0f, rayTarget.y, rayTarget.z);
+							collisionMap[rayTarget.y].insert(std::make_pair(rayTarget.x + 1.0f, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y < PlayerSize) //looking at the top of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y + 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y + 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+					}
+				}
+				else
+				{
+					if (offset.z > 0.0f) //looking towards positive Z.
+					{
+						if (offset.y > PlayerSize) //looking at the bottom of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y - 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y - 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+
+						}
+						else if (offset.y > -1.0f && offset.y < 1.0f) //looking at the middle of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y, rayTarget.z - 1.0f);
+							collisionMap[rayTarget.y].insert(std::make_pair(rayTarget.x, rayTarget.z - 1.0f));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y < PlayerSize) //looking at the top of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y + 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y + 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+
+					}
+					if (offset.z < 0.0f) //looking towards negative z.
+					{
+						if (offset.y > PlayerSize) //looking at the bottom of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y - 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y - 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y > -1.0f && offset.y < 1.0f) //looking at the middle of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y, rayTarget.z + 1.0f);
+							collisionMap[rayTarget.y].insert(std::make_pair(rayTarget.x, rayTarget.z + 1.0f));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+						else if (offset.y < PlayerSize) //looking at the top of the block
+						{
+							glm::vec3 newBlock = glm::vec3(rayTarget.x, rayTarget.y + 1.0f, rayTarget.z);
+							collisionMap[rayTarget.y + 1.0f].insert(std::make_pair(rayTarget.x, rayTarget.z));
+							ChunkController::placeBlock(newBlock);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	void CollisionDetection::removeBlock(glm::vec3 startingPosition, glm::vec3 ray)
+	{
+		for (int i = 0; i < BlockPlacementRange; i++)
+		{
+			startingPosition += ray * 1.0f;
+			auto rayTarget = startingPosition;
+			rayTarget.x = floor(rayTarget.x);
+			rayTarget.y = ceil(rayTarget.y);
+			rayTarget.z = floor(rayTarget.z);
+			rayTarget.y -= 1.0f;
+
 			auto block = collisionMap[rayTarget.y].find(std::make_pair(rayTarget.x, rayTarget.z));
 			if (block != collisionMap[rayTarget.y].end())
 			{
