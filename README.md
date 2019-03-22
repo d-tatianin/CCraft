@@ -1,13 +1,18 @@
 # CCraft
-## The game is currently in the pre-alpha stage and is work in progress.
-### List of things to be implemented before the game goes into the alpha stage: 
-- Player collision detection system. 	:white_check_mark:
-- Block placement/removal system. 🚧
-- Dynamic chunk generation. 	:white_check_mark:
+## The game is currently in the alpha stage and is work in progress.
+## Some of the current issues that need to be fixed in future versions: 
+- Block removal system sometimes incorrectly identifies the targeted block.
+- Block placement system needs to be reworked to identify the targeted block's side without taking player's Y coordinate into account.
+- Minor collision issues.
 
-Controls: 
-1. WASD for moving around.
-2. Space to go up, Shift to go down.
-3. ESC to go back. 
-4. 1/2 to enable/disable wireframe mode.
-5. F1 to enable FPS counter/show player coordinates.
+## Some of the features to be implemented in future versions: 
+- Player inventory/block selection.
+- Sound.
+- Physics.
+
+## Controls: 
+- WASD for moving around.
+- Space to go up, Shift to go down.
+- ESC to go back. 
+- 1/2 to enable/disable wireframe mode.
+- F1 to enable FPS counter/show player coordinates.
